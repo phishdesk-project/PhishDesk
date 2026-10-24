@@ -1,0 +1,33 @@
+# Every path rule lists BOTH teams: the leading team first, the other team second.
+# Team order documents who leads; approval from either team counts.
+# Project policy: the other project owner reviews every pull request.
+# CODEOWNERS alone does not enforce approval by the other owner.
+# Keep the catch-all first: later matching rules override earlier rules.
+
+* @phishdesk-project/cyber @phishdesk-project/ai-ml
+
+# AI/ML-led paths
+/src/phishdesk/analysis/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/src/phishdesk/campaigns/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/web/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/brands/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/bench/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+
+# Cybersecurity-led paths
+/src/phishdesk/parsing/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/src/phishdesk/connectors/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/src/phishdesk/checks/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/src/phishdesk/remediation/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/src/phishdesk/api/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/src/phishdesk/worker/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/sandbox/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/deploy/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/tests/security/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/.github/workflows/security.yml @phishdesk-project/cyber @phishdesk-project/ai-ml
+
+# Shared paths
+/src/phishdesk/contracts/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/tests/contract/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/docs/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/.github/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/pyproject.toml @phishdesk-project/cyber @phishdesk-project/ai-ml
