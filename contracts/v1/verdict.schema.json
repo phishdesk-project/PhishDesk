@@ -1,0 +1,141 @@
+{
+  "$defs": {
+    "ModelSignal": {
+      "additionalProperties": false,
+      "properties": {
+        "model_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Model Id",
+          "type": "string"
+        },
+        "model_version": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Model Version",
+          "type": "string"
+        },
+        "score": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Score",
+          "type": "number"
+        }
+      },
+      "required": [
+        "model_id",
+        "model_version",
+        "score"
+      ],
+      "title": "ModelSignal",
+      "type": "object"
+    },
+    "Reason": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_refs": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "summary": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary",
+        "evidence_refs"
+      ],
+      "title": "Reason",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "format": "uuid",
+      "title": "Case Id",
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "injection_flags": {
+      "default": [],
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Injection Flags",
+      "type": "array"
+    },
+    "label": {
+      "enum": [
+        "Safe",
+        "Suspicious",
+        "Dangerous"
+      ],
+      "title": "Label",
+      "type": "string"
+    },
+    "model_signals": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ModelSignal"
+      },
+      "maxItems": 20,
+      "title": "Model Signals",
+      "type": "array"
+    },
+    "reasons": {
+      "items": {
+        "$ref": "#/$defs/Reason"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Reasons",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "verdict.v1",
+      "default": "verdict.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "uncertainty": {
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Uncertainty",
+      "type": "array"
+    }
+  },
+  "required": [
+    "case_id",
+    "label",
+    "confidence",
+    "reasons",
+    "uncertainty"
+  ],
+  "title": "VerdictV1",
+  "type": "object"
+}

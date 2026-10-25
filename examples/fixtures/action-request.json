@@ -1,0 +1,19 @@
+{
+  "schema_version": "action-request.v1",
+  "request_id": "00000000-0000-4000-8000-000000000002",
+  "case_id": "00000000-0000-4000-8000-000000000001",
+  "action": "quarantine",
+  "targets": [
+    {
+      "provider": "gmail",
+      "mailbox_id": "lab-only",
+      "message_ids": [
+        "synthetic-1"
+      ]
+    }
+  ],
+  "reason": "Synthetic proposal only; execution is unavailable",
+  "risk": "Suspicious",
+  "approval_required": true,
+  "rollback_description": "Restore synthetic-1 using an independently authorised backend action"
+}

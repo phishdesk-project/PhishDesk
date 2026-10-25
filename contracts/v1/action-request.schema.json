@@ -1,0 +1,116 @@
+{
+  "$defs": {
+    "ActionTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "mailbox_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Mailbox Id",
+          "type": "string"
+        },
+        "message_ids": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Message Ids",
+          "type": "array"
+        },
+        "provider": {
+          "enum": [
+            "gmail",
+            "graph"
+          ],
+          "title": "Provider",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider",
+        "mailbox_id",
+        "message_ids"
+      ],
+      "title": "ActionTarget",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "action": {
+      "enum": [
+        "quarantine",
+        "restore"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "approval_required": {
+      "const": true,
+      "default": true,
+      "title": "Approval Required",
+      "type": "boolean"
+    },
+    "case_id": {
+      "format": "uuid",
+      "title": "Case Id",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "request_id": {
+      "format": "uuid",
+      "title": "Request Id",
+      "type": "string"
+    },
+    "risk": {
+      "enum": [
+        "Suspicious",
+        "Dangerous"
+      ],
+      "title": "Risk",
+      "type": "string"
+    },
+    "rollback_description": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Rollback Description",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "action-request.v1",
+      "default": "action-request.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "targets": {
+      "items": {
+        "$ref": "#/$defs/ActionTarget"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "title": "Targets",
+      "type": "array"
+    }
+  },
+  "required": [
+    "request_id",
+    "case_id",
+    "action",
+    "targets",
+    "reason",
+    "risk",
+    "rollback_description"
+  ],
+  "title": "ActionRequestV1",
+  "type": "object"
+}

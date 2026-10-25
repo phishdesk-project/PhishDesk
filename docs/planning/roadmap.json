@@ -1,0 +1,2381 @@
+{
+  "source": "PhishDesk Revised 8-Month Plan (v2).pdf",
+  "schedule": "Relative phases only; no calendar dates or deadlines. Work at available capacity. Weeks are sequencing units, not commitments.",
+  "phases": [
+    {
+      "month": 1,
+      "milestone": "v0.0 Foundation",
+      "gate": "Sandbox and local LLM feasibility recorded; schema-valid synthetic end-to-end exchange; blockers recorded."
+    },
+    {
+      "month": 2,
+      "milestone": "v0.1 First verdict",
+      "gate": "Report, parse, classify, explain and reply in the lab; measure the one-minute goal on named hardware/model; freeze the test set; Microsoft 365 go/no-go."
+    },
+    {
+      "month": 3,
+      "milestone": "v0.2 Sandbox and dashboard",
+      "gate": "Containment tests pass before any unknown live URL; screenshot/form evidence and validated verdict; protect Week 12 for integration."
+    },
+    {
+      "month": 4,
+      "milestone": "v0.3 Brands and campaigns",
+      "gate": "Defensible synthetic clusters; copies found only in authorised mailboxes; corroborated brand signals; mid-project demo."
+    },
+    {
+      "month": 5,
+      "milestone": "v0.4 Approved response",
+      "gate": "One provider supports propose, approve, quarantine, audit and restore; zero incorrect removals on the test set."
+    },
+    {
+      "month": 6,
+      "milestone": "v0.5 Hardening",
+      "gate": "Mandatory security/contract tests pass; reproducible comparisons; plugin API frozen; protect Week 24 for integration."
+    },
+    {
+      "month": 7,
+      "milestone": "v0.9 Beta",
+      "gate": "Outside tester installs, runs the synthetic demo and reports a reproducible issue; fresh final test set; no unsupported claims."
+    },
+    {
+      "month": 8,
+      "milestone": "v1.0 Launch",
+      "gate": "Fresh reviewer completes install, analyse, evidence, search, approve, quarantine and restore; security sign-off and reproducible final results."
+    }
+  ],
+  "tasks": [
+    {
+      "key": "C01",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M1][C01] Bootstrap FastAPI, logging, CI and Compose",
+      "package": "src/phishdesk/api; deploy; .github/workflows",
+      "dependencies": [],
+      "acceptance": [
+        "Editable install and offline fixture demo work from clean checkout",
+        "Lint, types and tests run on every PR",
+        "Compose is loopback-only and has no credentials, mail access or action execution"
+      ],
+      "deliverable": "Bootstrap FastAPI, logging, CI and Compose",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C02",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M1][C02] Implement a bounded defensive MIME parser",
+      "package": "src/phishdesk/parsing",
+      "dependencies": [
+        "S02",
+        "C01"
+      ],
+      "acceptance": [
+        "Parse 20 synthetic .eml samples into Evidence v1 with headers, bodies, URLs, QR and attachment metadata",
+        "Enforce size, recursion and time budgets with explicit failure states",
+        "Malformed nested MIME and oversized inputs have regression tests"
+      ],
+      "deliverable": "Implement a bounded defensive MIME parser",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C03",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M1][C03] Add deterministic sender and URL checks",
+      "package": "src/phishdesk/checks",
+      "dependencies": [
+        "C02"
+      ],
+      "acceptance": [
+        "Reply-To mismatch, lookalikes, URL structure and domain-age checks return evidence, severity and confidence",
+        "Authentication provenance distinguishes trusted ingress results from spoofed headers",
+        "Failed lookups remain unknown and never prove safety"
+      ],
+      "deliverable": "Add deterministic sender and URL checks",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C04",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M1][C04] Run mailbox-access and sandbox feasibility spikes",
+      "package": "src/phishdesk/connectors; sandbox",
+      "dependencies": [
+        "C01"
+      ],
+      "acceptance": [
+        "Record IMAP/Gmail test-account access and request a Microsoft 365 test tenant",
+        "Screenshot an owned synthetic page using a disposable isolated VM with private networks and credentials blocked",
+        "Record sandbox go/no-go and disable uncontrolled navigation; no live remediation"
+      ],
+      "deliverable": "Run mailbox-access and sandbox feasibility spikes",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A01",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M1][A01] Design labelled data and scripted synthetic corpus",
+      "package": "bench/data",
+      "dependencies": [],
+      "acceptance": [
+        "Specify at least several hundred labelled messages with provenance and licences",
+        "Include credential, payment, urgency, impersonation, legitimate and legitimate-but-urgent categories",
+        "Deterministic generator uses invented brands and lab-only domains"
+      ],
+      "deliverable": "Design labelled data and scripted synthetic corpus",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A02",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M1][A02] Train reproducible TF-IDF logistic baseline",
+      "package": "src/phishdesk/analysis; bench",
+      "dependencies": [
+        "A01"
+      ],
+      "acceptance": [
+        "Record seed, split manifest and environment",
+        "Report precision, recall, F1 and confusion matrix",
+        "Keep development and evaluation data separate"
+      ],
+      "deliverable": "Train reproducible TF-IDF logistic baseline",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A03",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M1][A03] Measure local LLM feasibility and fallback",
+      "package": "src/phishdesk/analysis; bench",
+      "dependencies": [
+        "A01"
+      ],
+      "acceptance": [
+        "Evaluate about 20 synthetic emails for output validity, quality, latency and memory",
+        "Name model version and hardware",
+        "Record go/no-go; choose smaller model or rules-first fast path if necessary"
+      ],
+      "deliverable": "Measure local LLM feasibility and fallback",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A04",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M1][A04] Build a fake analyser and contract integration fixtures",
+      "package": "src/phishdesk/analysis; tests/contract",
+      "dependencies": [
+        "S02"
+      ],
+      "acceptance": [
+        "Return validated Verdict fixtures for known Evidence fixtures",
+        "Exchange schemas across both tracks without a running model",
+        "Reject invalid output and show unknown evidence and injection flags"
+      ],
+      "deliverable": "Build a fake analyser and contract integration fixtures",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S01",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M1][S01] Record equal ownership, decisions and Month 1 gate",
+      "package": "docs/governance; docs/reports",
+      "dependencies": [],
+      "acceptance": [
+        "Both owners review university IP rules, licence/DCO choice, authorship, account custody, leave scenario and commercial decisions; no agreement is signed by automation",
+        "Document within-track authority and joint cross-track decisions; deadlock spike is at most one week then neutral mentor",
+        "Review C01-C04/A01-A04/S02 evidence; chapter 1 and retrospective record blockers"
+      ],
+      "deliverable": "Record equal ownership, decisions and Month 1 gate",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S02",
+      "month": 1,
+      "relative_weeks": "W1-W4",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M1][S02] Agree Evidence, Verdict and ActionRequest v1",
+      "package": "src/phishdesk/contracts; docs/contracts; tests/contract",
+      "dependencies": [],
+      "acceptance": [
+        "Both owners review versioned Pydantic models, JSON Schemas and fixtures",
+        "Evidence includes missing states; Verdict has grounded reasons, uncertainty and injection flags",
+        "ActionRequest is a proposal only with scope, approval requirement and rollback; no LLM can authorise execution"
+      ],
+      "deliverable": "Agree Evidence, Verdict and ActionRequest v1",
+      "labels": [
+        "contracts",
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 6, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C05",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][C05] Implement IMAP and Gmail ingest adapters",
+      "package": "src/phishdesk/connectors",
+      "dependencies": [
+        "C04",
+        "S02"
+      ],
+      "acceptance": [
+        "Secure runtime credentials never enter fixtures or logs",
+        "Deduplication, retries, provider errors and mocks are tested",
+        "Only authorised lab mailboxes are queried"
+      ],
+      "deliverable": "Implement IMAP and Gmail ingest adapters",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C06",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][C06] Persist cases and run idempotent async jobs",
+      "package": "src/phishdesk/worker; deploy",
+      "dependencies": [
+        "C01",
+        "C02"
+      ],
+      "acceptance": [
+        "Use PostgreSQL cases and Redis with a documented Dramatiq/Celery choice",
+        "Expose queued/running/succeeded/failed states",
+        "Retry and duplicate-delivery tests prove idempotency"
+      ],
+      "deliverable": "Persist cases and run idempotent async jobs",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C07",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][C07] Publish case API and mock API by relative Week 5",
+      "package": "src/phishdesk/api; docs/api",
+      "dependencies": [
+        "S02"
+      ],
+      "acceptance": [
+        "Publish OpenAPI plus fixtures early enough for React work in parallel",
+        "Case/report/status routes have contract and error tests",
+        "Reporter reply sanitises hostile content and contains no clickable dangerous links"
+      ],
+      "deliverable": "Publish case API and mock API by relative Week 5",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C08",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][C08] Add retention, redaction, delete-case and tenant gate",
+      "package": "src/phishdesk/api; docs/privacy",
+      "dependencies": [
+        "C06",
+        "C07"
+      ],
+      "acceptance": [
+        "Configurable retention and redacted logging are tested",
+        "Authenticated delete-case removes case data and dependent artefacts",
+        "Record Month 2 Microsoft 365 go/no-go; Graph is experimental/deferred if tenant unavailable"
+      ],
+      "deliverable": "Add retention, redaction, delete-case and tenant gate",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A05",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][A05] Extract structured intent grounded in evidence",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "A03",
+        "S02"
+      ],
+      "acceptance": [
+        "Credential/payment/urgency/impersonation extraction cites message evidence",
+        "Schema-invalid responses fail closed with explicit error state",
+        "Do not invent observations for missing evidence"
+      ],
+      "deliverable": "Extract structured intent grounded in evidence",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A06",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][A06] Fuse deterministic and model risk safely",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "C03",
+        "A02",
+        "A05"
+      ],
+      "acceptance": [
+        "High-risk deterministic evidence sets a risk floor",
+        "Model output cannot lower that floor or authorise actions",
+        "Reasons communicate uncertainty and unknown lookup states"
+      ],
+      "deliverable": "Fuse deterministic and model risk safely",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A07",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][A07] Freeze test data and add injection starter regression",
+      "package": "bench; tests/security",
+      "dependencies": [
+        "A01",
+        "A02",
+        "A05"
+      ],
+      "acceptance": [
+        "Freeze and hash held-out test set; never tune on it",
+        "Run 10-20 injection cases in CI and record baseline",
+        "Set false-alarm, injection-success and calibration targets only after baseline; record numeric values and rationale"
+      ],
+      "deliverable": "Freeze test data and add injection starter regression",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A08",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][A08] Scaffold React against mocks and show a first-verdict demo",
+      "package": "web",
+      "dependencies": [
+        "C07",
+        "A04",
+        "A06"
+      ],
+      "acceptance": [
+        "Case page or CLI visibly shows safe fixture verdict, reasons and uncertainty",
+        "React consumes published mocks independently of backend progress",
+        "Attacker HTML and unsafe links are rendered inert"
+      ],
+      "deliverable": "Scaffold React against mocks and show a first-verdict demo",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S03",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][S03] Verify v0.1 quick start and write report chapter 2",
+      "package": "docs/reports; deploy",
+      "dependencies": [
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "A06",
+        "A07",
+        "A08"
+      ],
+      "acceptance": [
+        "Clean Compose install handles a synthetic report through a sanitised reply",
+        "Measure one-minute verdict and ten-minute install goals on named hardware/model; record results without claiming success in advance",
+        "Chapter 2 covers requirements/data/method; both review release gate before any public launch"
+      ],
+      "deliverable": "Verify v0.1 quick start and write report chapter 2",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S04",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][S04] Prepare community soft-launch package",
+      "package": "README.md; docs/community",
+      "dependencies": [
+        "A08"
+      ],
+      "acceptance": [
+        "60-second demo and accurate quick start have evidence",
+        "Prepare 15-20 scoped newcomer/help-wanted issues and a 48-hour reply rotation",
+        "Budget about 2-3 hours each per working week; public visibility, posts and invitations require separate owner action"
+      ],
+      "deliverable": "Prepare community soft-launch package",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C09",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][C09] Build disposable browser evidence jobs",
+      "package": "sandbox",
+      "dependencies": [
+        "C04",
+        "C06"
+      ],
+      "acceptance": [
+        "Capture screenshots, redirects, final URL, resource indicators and form fields",
+        "Use disposable jobs with non-root execution and resource/time quotas",
+        "Only owned synthetic targets are used until containment passes"
+      ],
+      "deliverable": "Build disposable browser evidence jobs",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C10",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][C10] Prove sandbox containment and neutral egress",
+      "package": "sandbox; tests/security",
+      "dependencies": [
+        "C09"
+      ],
+      "acceptance": [
+        "Block private, loopback, link-local and metadata addresses through DNS and every redirect; include rebinding tests",
+        "Dedicated VM/equivalent plus controlled proxy are tested; container alone is insufficient",
+        "Neutral egress, token stripping where feasible and admin disable-visits switch are documented; no unknown live URLs before gate"
+      ],
+      "deliverable": "Prove sandbox containment and neutral egress",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C11",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][C11] Expose authenticated evidence and screenshot references",
+      "package": "src/phishdesk/api",
+      "dependencies": [
+        "C07",
+        "C09"
+      ],
+      "acceptance": [
+        "Evidence API returns screenshot IDs rather than attacker URLs",
+        "Permission tests prevent cross-case evidence reads",
+        "Timeouts and sandbox failures remain explicit unknowns"
+      ],
+      "deliverable": "Expose authenticated evidence and screenshot references",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C12",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][C12] Publish check plugin example and boundary tests",
+      "package": "src/phishdesk/checks; examples/plugins",
+      "dependencies": [
+        "C03",
+        "S02"
+      ],
+      "acceptance": [
+        "A simple check uses a versioned interface and fixture",
+        "Document declared permissions and review requirements",
+        "Example passes contract and error-path tests; plugin code is not assumed isolated"
+      ],
+      "deliverable": "Publish check plugin example and boundary tests",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A09",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][A09] Separate hostile input and validate LLM behaviour",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "A05",
+        "A07"
+      ],
+      "acceptance": [
+        "Separate trusted instructions from hostile mail/page content",
+        "Validate output and independently check instruction following",
+        "Record detection failures and keep deterministic safeguards independent"
+      ],
+      "deliverable": "Separate hostile input and validate LLM behaviour",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A10",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][A10] Expand injection suite across content channels",
+      "package": "tests/security; bench",
+      "dependencies": [
+        "A09"
+      ],
+      "acceptance": [
+        "Include direct, invisible, encoded, multilingual, attachment and image-carried cases",
+        "Report attack success by category before and after safeguards",
+        "Regression CI records reproducible seeds/model configuration"
+      ],
+      "deliverable": "Expand injection suite across content channels",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A11",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][A11] Ground page analysis in sandbox evidence",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "C09",
+        "A09"
+      ],
+      "acceptance": [
+        "Reference only observed forms, redirects and resources",
+        "Missing/failed screenshot evidence cannot become safe proof",
+        "Regression fixtures reject invented observations"
+      ],
+      "deliverable": "Ground page analysis in sandbox evidence",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A12",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][A12] Deliver dashboard v1 evidence and verdict screens",
+      "package": "web",
+      "dependencies": [
+        "A08",
+        "C11",
+        "A11"
+      ],
+      "acceptance": [
+        "Show case list, evidence, screenshots, reasons, uncertainty and injection flags",
+        "Authenticated error/timeout/empty states work against mocks and API",
+        "Unsafe content never executes in the dashboard"
+      ],
+      "deliverable": "Deliver dashboard v1 evidence and verdict screens",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S05",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][S05] Protect Week 12 integration and run v0.2 containment gate",
+      "package": "docs/releases; tests/security",
+      "dependencies": [
+        "C10",
+        "C11",
+        "A10",
+        "A12"
+      ],
+      "acceptance": [
+        "Reserve relative Week 12 for buffer/integration, not new scope",
+        "Synthetic linked-page demo produces evidence plus validated verdict",
+        "Both owners sign off test evidence; unknown live URLs stay disabled if containment fails"
+      ],
+      "deliverable": "Protect Week 12 integration and run v0.2 containment gate",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S06",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][S06] Create docs skeleton and report chapter 3",
+      "package": "docs; mkdocs.yml",
+      "dependencies": [
+        "C12",
+        "A12"
+      ],
+      "acceptance": [
+        "MkDocs navigation covers architecture, threat model and plugin example",
+        "Chapter 3 explains neutral egress and attacker-controlled inputs",
+        "Community rotation continues within capacity"
+      ],
+      "deliverable": "Create docs skeleton and report chapter 3",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 8, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C13",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][C13] Add experimental Graph read/search connector",
+      "package": "src/phishdesk/connectors",
+      "dependencies": [
+        "C08",
+        "C05"
+      ],
+      "acceptance": [
+        "Use test-tenant consent/scopes and least privilege",
+        "Pagination, throttling and retries have mocks",
+        "Clearly mark experimental/deferred if Month 2 access gate failed"
+      ],
+      "deliverable": "Add experimental Graph read/search connector",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C14",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][C14] Extract infrastructure features and graph edges",
+      "package": "src/phishdesk/checks",
+      "dependencies": [
+        "C03",
+        "C09"
+      ],
+      "acceptance": [
+        "Emit domains, redirects, IPs, Reply-To identities and attachment hashes",
+        "Each edge retains evidence provenance and missing-state semantics",
+        "Fixtures show misleading/shared infrastructure without asserting guilt"
+      ],
+      "deliverable": "Extract infrastructure features and graph edges",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C15",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][C15] Search related copies within authorised mailboxes",
+      "package": "src/phishdesk/connectors",
+      "dependencies": [
+        "C05",
+        "C14"
+      ],
+      "acceptance": [
+        "search_copies has explicit mailbox scope, pagination and rate limits",
+        "Negative permission tests block unauthorised mailboxes",
+        "Deduplication and partial-provider failures are explicit"
+      ],
+      "deliverable": "Search related copies within authorised mailboxes",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C16",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][C16] Expose campaign API and membership evidence",
+      "package": "src/phishdesk/api",
+      "dependencies": [
+        "C15",
+        "A15"
+      ],
+      "acceptance": [
+        "Campaign endpoints enforce case/mailbox scope",
+        "Membership includes explainable evidence references",
+        "Pagination and mixed-provider failure states have contract tests"
+      ],
+      "deliverable": "Expose campaign API and membership evidence",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A13",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][A13] Curate a small approved brand reference corpus",
+      "package": "brands",
+      "dependencies": [
+        "A01"
+      ],
+      "acceptance": [
+        "Record provenance, licences and expected domains for approved screenshots",
+        "Start with a small brand count and data-only contributions",
+        "Use invented brands for synthetic demos"
+      ],
+      "deliverable": "Curate a small approved brand reference corpus",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A14",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][A14] Implement visual matching with domain corroboration",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "A13",
+        "C09"
+      ],
+      "acceptance": [
+        "Compare OpenCLIP/ONNX embeddings with a recorded baseline",
+        "Corroborate lookalike screenshots with independent domain/evidence signals",
+        "Measure false matches and never infer fraud from appearance alone"
+      ],
+      "deliverable": "Implement visual matching with domain corroboration",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A15",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][A15] Version embeddings and explain campaign clusters",
+      "package": "src/phishdesk/campaigns",
+      "dependencies": [
+        "C14",
+        "A02"
+      ],
+      "acceptance": [
+        "Store versioned text/URL embeddings in pgvector",
+        "Combine similarity with shared infrastructure and explain membership",
+        "Measure false associations and content-variation robustness"
+      ],
+      "deliverable": "Version embeddings and explain campaign clusters",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A16",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][A16] Build campaign view and evaluate brands/clusters",
+      "package": "web; bench",
+      "dependencies": [
+        "A12",
+        "A14",
+        "A15",
+        "C16"
+      ],
+      "acceptance": [
+        "Campaign UI shows corroborated brand signals and related messages",
+        "Evaluate brand detection, cluster quality and false associations",
+        "Show insufficient-evidence and partial-search states"
+      ],
+      "deliverable": "Build campaign view and evaluate brands/clusters",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S07",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][S07] Run v0.3 authorised-copy and mid-project demo gate",
+      "package": "docs/releases",
+      "dependencies": [
+        "C13",
+        "C15",
+        "C16",
+        "A16"
+      ],
+      "acceptance": [
+        "Demonstrate defensible synthetic cluster and scoped copy search",
+        "Both review connector permission and false-association tests",
+        "Record cut-list decisions if more than one relative working week behind"
+      ],
+      "deliverable": "Run v0.3 authorised-copy and mid-project demo gate",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S08",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][S08] Publish brand guide, demo rehearsal and report chapter 4",
+      "package": "docs; brands",
+      "dependencies": [
+        "A13",
+        "A16"
+      ],
+      "acceptance": [
+        "Write data-only brand-template contribution guide",
+        "Record/rehearse demo using synthetic data with no credentials",
+        "Chapter 4 covers detection methods and limitations; community rotation continues"
+      ],
+      "deliverable": "Publish brand guide, demo rehearsal and report chapter 4",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 9, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C17",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][C17] Validate scoped proposals and dry-run policy",
+      "package": "src/phishdesk/remediation",
+      "dependencies": [
+        "S02",
+        "C15"
+      ],
+      "acceptance": [
+        "ActionRequest v1 has explicit scope, reason, risk and rollback",
+        "Execution is disabled by default; dry run has no mailbox side effects",
+        "Policy independently checks evidence and disallows model-only quarantine"
+      ],
+      "deliverable": "Validate scoped proposals and dry-run policy",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C18",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][C18] Implement role approvals and revalidate before execution",
+      "package": "src/phishdesk/remediation; src/phishdesk/api",
+      "dependencies": [
+        "C17"
+      ],
+      "acceptance": [
+        "Authorised human approval, proposal expiry and scope revalidation are tested",
+        "Rate limits, replay prevention and idempotency reject duplicate execution",
+        "LLM/client flags cannot approve or bypass backend policy"
+      ],
+      "deliverable": "Implement role approvals and revalidate before execution",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C19",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][C19] Implement quarantine and restore for one provider",
+      "package": "src/phishdesk/remediation",
+      "dependencies": [
+        "C18"
+      ],
+      "acceptance": [
+        "Choose Graph or Gmail based on working lab access",
+        "End-to-end quarantine/restore preserves targets and handles partial failure",
+        "Second provider remains experimental; authorised test accounts only"
+      ],
+      "deliverable": "Implement quarantine and restore for one provider",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C20",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][C20] Record redacted action audit and restoration history",
+      "package": "src/phishdesk/remediation",
+      "dependencies": [
+        "C18",
+        "C19"
+      ],
+      "acceptance": [
+        "Audit proposer, approver, targets, times, outcome and restoration",
+        "Access controls and log redaction are tested",
+        "Scope-change, expiry, wrong-role and restore failures are covered"
+      ],
+      "deliverable": "Record redacted action audit and restoration history",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A17",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][A17] Calibrate confidence by category and missing evidence",
+      "package": "bench; src/phishdesk/analysis",
+      "dependencies": [
+        "A07",
+        "A06"
+      ],
+      "acceptance": [
+        "Produce reliability plots and Brier score",
+        "Use development/calibration data without tuning on frozen test data",
+        "Report calibration by category and evidence availability"
+      ],
+      "deliverable": "Calibrate confidence by category and missing evidence",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A18",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][A18] Add advisory triage priority to fused verdicts",
+      "package": "src/phishdesk/analysis",
+      "dependencies": [
+        "A17",
+        "A06"
+      ],
+      "acceptance": [
+        "Priority is advisory and never authorises mailbox actions",
+        "Risk floors and missing-evidence semantics are preserved",
+        "Fixture tests show disagreement between model and deterministic evidence"
+      ],
+      "deliverable": "Add advisory triage priority to fused verdicts",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A19",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][A19] Publish benchmark v1 and failure analysis",
+      "package": "bench",
+      "dependencies": [
+        "A10",
+        "A14",
+        "A15",
+        "A17"
+      ],
+      "acceptance": [
+        "Measure phishing/false alarms, explanations, brands/campaigns, injection, runtime and cost",
+        "Record dataset hashes, model/hardware/config and failure examples",
+        "README results link reproducible evidence with limitations"
+      ],
+      "deliverable": "Publish benchmark v1 and failure analysis",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A20",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][A20] Build approval queue, scope preview and restore UI",
+      "package": "web",
+      "dependencies": [
+        "A12",
+        "C18",
+        "C19",
+        "C20"
+      ],
+      "acceptance": [
+        "Show proposal scope, approver permission, expiry and dry-run state",
+        "Display execution/partial-failure results and restore controls",
+        "Backend remains authority; UI cannot bypass approval"
+      ],
+      "deliverable": "Build approval queue, scope preview and restore UI",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S09",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][S09] Verify v0.4 response chain and zero incorrect removals",
+      "package": "tests/security; docs/releases",
+      "dependencies": [
+        "C20",
+        "A20",
+        "A19"
+      ],
+      "acceptance": [
+        "Synthetic campaign runs find/propose/approve/quarantine/audit/restore",
+        "Incorrect removals on the test set equal zero; record denominator and failures",
+        "Both owners review approval-bypass and rollback evidence"
+      ],
+      "deliverable": "Verify v0.4 response chain and zero incorrect removals",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S10",
+      "month": 5,
+      "relative_weeks": "W17-W20",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][S10] Write report chapter 5 and benchmark announcement draft",
+      "package": "docs/reports; docs/community",
+      "dependencies": [
+        "A19",
+        "S09"
+      ],
+      "acceptance": [
+        "Chapter 5 explains remediation design and calibration",
+        "Benchmark table includes reproducibility and limitations",
+        "Prepare community material for owner review without posting automatically"
+      ],
+      "deliverable": "Write report chapter 5 and benchmark announcement draft",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 10, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C21",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][C21] Run threat-model security regression and fuzzing",
+      "package": "tests/security; docs/threat-model.md",
+      "dependencies": [
+        "C10",
+        "C20"
+      ],
+      "acceptance": [
+        "Cover API permission, mailbox scope, parser fuzz, secrets, escape/SSRF and remediation bypass",
+        "Triage severity and fix blockers before optional work",
+        "Record test evidence and residual risks"
+      ],
+      "deliverable": "Run threat-model security regression and fuzzing",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C22",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][C22] Freeze documented plugin API and permissions",
+      "package": "src/phishdesk; examples/plugins",
+      "dependencies": [
+        "C12",
+        "C21"
+      ],
+      "acceptance": [
+        "Version checks, connectors, analysers, brand templates and actions with fixtures",
+        "Document permissions and executable contribution review; declarations are not isolation",
+        "Both approve compatibility policy and API freeze"
+      ],
+      "deliverable": "Freeze documented plugin API and permissions",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C23",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][C23] Add security CI, dependency and image review",
+      "package": " .github/workflows; deploy",
+      "dependencies": [
+        "C01",
+        "C21"
+      ],
+      "acceptance": [
+        "CodeQL, dependency/secret checks, image scanning, types and lint are configured where supported",
+        "Pin action revisions and use least-privilege permissions",
+        "Record unavailable paid/private features and never claim enabled scans without a run"
+      ],
+      "deliverable": "Add security CI, dependency and image review",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C24",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][C24] Document deployment, backup, restore and upgrades",
+      "package": "deploy; docs/operations",
+      "dependencies": [
+        "C08",
+        "C21"
+      ],
+      "acceptance": [
+        "Document runtime credentials and provider scopes",
+        "Rehearse backup/restore and upgrade paths with synthetic data",
+        "Second provider remediation is experimental and attempted only if capacity remains"
+      ],
+      "deliverable": "Document deployment, backup, restore and upgrades",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A21",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][A21] Run same-data ablations",
+      "package": "bench",
+      "dependencies": [
+        "A19"
+      ],
+      "acceptance": [
+        "Compare rules-only, classifier-only, classifier plus LLM and full pipeline",
+        "Use identical frozen evaluation data and pinned configs",
+        "Publish scripts, hashes and limitations without test-set tuning"
+      ],
+      "deliverable": "Run same-data ablations",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A22",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][A22] Compare local and optional cloud models",
+      "package": "bench",
+      "dependencies": [
+        "A21"
+      ],
+      "acceptance": [
+        "Measure quality, valid JSON, hallucinations, latency, memory and cost",
+        "Cloud comparisons use synthetic/licensed data with explicit opt-in and no secrets",
+        "Record model versions and hardware; avoid unsupported claims"
+      ],
+      "deliverable": "Compare local and optional cloud models",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A23",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][A23] Evaluate robustness and explanation feedback",
+      "package": "bench",
+      "dependencies": [
+        "A21",
+        "A10"
+      ],
+      "acceptance": [
+        "Cover time-separated samples, missing evidence, formats, languages and new synthetic variants",
+        "Seek about ten volunteers if feasible using consented synthetic examples",
+        "Record sources, limits and negative results"
+      ],
+      "deliverable": "Evaluate robustness and explanation feedback",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A24",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][A24] Publish plugin tutorial and live docs content",
+      "package": "docs; web",
+      "dependencies": [
+        "C22",
+        "S06"
+      ],
+      "acceptance": [
+        "Tutorial adds a check in about 30 minutes with fixtures",
+        "Docs link supported plugin contracts and dashboard behaviour",
+        "Verify docs locally before any publication"
+      ],
+      "deliverable": "Publish plugin tutorial and live docs content",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S11",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][S11] Protect Week 24 buffer and run v0.5 gate",
+      "package": "docs/releases",
+      "dependencies": [
+        "C21",
+        "C22",
+        "C23",
+        "C24",
+        "A21",
+        "A23",
+        "A24"
+      ],
+      "acceptance": [
+        "Reserve relative Week 24 for buffer, integration and fixes",
+        "Mandatory security and contract checks pass",
+        "Both owners approve plugin freeze and reproducible benchmark claims"
+      ],
+      "deliverable": "Protect Week 24 buffer and run v0.5 gate",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S12",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][S12] Write evaluation draft chapter 6 and community tutorial",
+      "package": "docs/reports; docs/community",
+      "dependencies": [
+        "A21",
+        "A22",
+        "A23",
+        "A24"
+      ],
+      "acceptance": [
+        "Chapter 6 includes ablations, models, robustness and limitations",
+        "Community tutorial and docs are ready for review",
+        "Apply cut list before optional features; capacity stays around 70 percent"
+      ],
+      "deliverable": "Write evaluation draft chapter 6 and community tutorial",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 11, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C25",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][C25] Test worker recovery, retention and operational reliability",
+      "package": "src/phishdesk/worker; tests",
+      "dependencies": [
+        "C24",
+        "C06"
+      ],
+      "acceptance": [
+        "Worker failures and retries do not duplicate actions",
+        "Backup, upgrades and retention have rehearsal evidence",
+        "Prioritise permission, data segregation and reliability defects"
+      ],
+      "deliverable": "Test worker recovery, retention and operational reliability",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C26",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][C26] Document one-instance-per-client operations",
+      "package": "docs/operations",
+      "dependencies": [
+        "C24"
+      ],
+      "acceptance": [
+        "MSP guide uses separate deployment, credentials and storage per client",
+        "Document limitations and future multi-tenancy design note",
+        "Do not claim multi-tenancy exists in v1.0"
+      ],
+      "deliverable": "Document one-instance-per-client operations",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C27",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][C27] Prepare beta install, vulnerability and tester onboarding",
+      "package": "docs; SECURITY.md",
+      "dependencies": [
+        "C25",
+        "C26"
+      ],
+      "acceptance": [
+        "Clean-start guide and release notes work with synthetic demo",
+        "Private vulnerability reporting channel is verified before beta",
+        "Tester onboarding is ready; invitations require owner action"
+      ],
+      "deliverable": "Prepare beta install, vulnerability and tester onboarding",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C28",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][C28] Fix beta security and reliability blockers",
+      "package": "src/phishdesk; tests/security",
+      "dependencies": [
+        "C27",
+        "A28"
+      ],
+      "acceptance": [
+        "Triage beta defects with reproduction fixtures",
+        "Permission/data-segregation/recovery blockers are fixed before optional work",
+        "Regression evidence and remaining limitations are recorded"
+      ],
+      "deliverable": "Fix beta security and reliability blockers",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A25",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M7][A25] Build untouched fresh final evaluation set",
+      "package": "bench/data",
+      "dependencies": [
+        "A07",
+        "A23"
+      ],
+      "acceptance": [
+        "Use new templates, brands and languages not tuned on",
+        "Hash and freeze manifest separately from dev/calibration/old test sets",
+        "Record sources/licences and access protocol before final scoring"
+      ],
+      "deliverable": "Build untouched fresh final evaluation set",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A26",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M7][A26] Stress-test injections, brands, clusters and uncertainty",
+      "package": "bench",
+      "dependencies": [
+        "A25",
+        "A23"
+      ],
+      "acceptance": [
+        "Evaluate category-level attacks and changed templates",
+        "Record uncertainty and missing-evidence failures",
+        "Do not tune on the new final set; use separate development variants"
+      ],
+      "deliverable": "Stress-test injections, brands, clusters and uncertainty",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A27",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M7][A27] Tune inference and dashboard from beta feedback",
+      "package": "src/phishdesk/analysis; web",
+      "dependencies": [
+        "A24",
+        "A23"
+      ],
+      "acceptance": [
+        "Evaluate cache, batching and model size on development data",
+        "Keep deterministic safeguards and risk floors intact",
+        "Dashboard polish covers accessibility and error states"
+      ],
+      "deliverable": "Tune inference and dashboard from beta feedback",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A28",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M7][A28] Analyse outside tester feedback and reproduce issues",
+      "package": "bench; docs/feedback",
+      "dependencies": [
+        "C27",
+        "A27"
+      ],
+      "acceptance": [
+        "An outside tester installs and runs synthetic demo",
+        "Capture at least one reproducible issue and its environment",
+        "No stretch experiment unless cut-list/capacity review permits it"
+      ],
+      "deliverable": "Analyse outside tester feedback and reproduce issues",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S13",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][S13] Run v0.9 beta readiness and defect gate",
+      "package": "docs/releases",
+      "dependencies": [
+        "C28",
+        "A25",
+        "A26",
+        "A28"
+      ],
+      "acceptance": [
+        "Outside-tester install/demo and reproducible feedback evidence exists",
+        "No unsupported security or tenancy claims",
+        "Both owners review blockers and approve readiness"
+      ],
+      "deliverable": "Run v0.9 beta readiness and defect gate",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S14",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M7][S14] Write chapter 7, beta and injection-post drafts",
+      "package": "docs/reports; docs/community",
+      "dependencies": [
+        "A26",
+        "A28"
+      ],
+      "acceptance": [
+        "Chapter 7 reports results, limitations and feedback",
+        "Draft beta announcement and prompt-injection defence post",
+        "Prepare publication for owner review; community rotation continues"
+      ],
+      "deliverable": "Write chapter 7, beta and injection-post drafts",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 12, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C29",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M8][C29] Run final security regression and remove unsupported claims",
+      "package": "tests/security",
+      "dependencies": [
+        "C28",
+        "S13"
+      ],
+      "acceptance": [
+        "Recheck authentication, secrets, mailbox scope, parser abuse and sandbox egress",
+        "Recheck approvals, audit and restore",
+        "Fix serious defects or remove associated release claims"
+      ],
+      "deliverable": "Run final security regression and remove unsupported claims",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C30",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M8][C30] Prepare release candidate, changelog and deployment matrix",
+      "package": "deploy; docs/releases",
+      "dependencies": [
+        "C29",
+        "C24"
+      ],
+      "acceptance": [
+        "Document supported versions, migrations and Compose configuration",
+        "Release candidate includes reproducible install and rollback instructions",
+        "Prepare tag/release material for human-reviewed release workflow"
+      ],
+      "deliverable": "Prepare release candidate, changelog and deployment matrix",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C31",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M8][C31] Complete provider, privacy and responsible-use operations docs",
+      "package": "docs/operations; SECURITY.md",
+      "dependencies": [
+        "C30",
+        "C08"
+      ],
+      "acceptance": [
+        "Document provider permissions, backup, retention, deletion and privacy",
+        "Explain deployment and sandbox limitations",
+        "Verify all quick-start commands and no credentials in examples"
+      ],
+      "deliverable": "Complete provider, privacy and responsible-use operations docs",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "C32",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M8][C32] Rehearse owned-account full demo and restoration",
+      "package": "examples; docs/demo",
+      "dependencies": [
+        "C29",
+        "C30",
+        "A32"
+      ],
+      "acceptance": [
+        "Fresh reviewer installs, analyses, inspects evidence and searches copies",
+        "Human approves quarantine and restores in owned test accounts",
+        "Record failures and clear demo credentials/artefacts after rehearsal"
+      ],
+      "deliverable": "Rehearse owned-account full demo and restoration",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A29",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M8][A29] Run final benchmark on the fresh frozen set",
+      "package": "bench",
+      "dependencies": [
+        "A25",
+        "A26",
+        "C29"
+      ],
+      "acceptance": [
+        "Report precision/recall, calibration, injection by category, brands/clusters, latency and resources",
+        "Use the untouched final manifest with named model/hardware",
+        "Keep failures and uncertainty visible; no test-set tuning"
+      ],
+      "deliverable": "Run final benchmark on the fresh frozen set",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A30",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M8][A30] Complete methods report and model documentation",
+      "package": "bench; docs/reports",
+      "dependencies": [
+        "A29",
+        "A21",
+        "A22"
+      ],
+      "acceptance": [
+        "Document licences, splits, ablations, comparisons and limitations",
+        "Publish model cards, known failures and reproducible configurations",
+        "Claims map to recorded measurements"
+      ],
+      "deliverable": "Complete methods report and model documentation",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A31",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M8][A31] Prepare final presentation and reproducible results",
+      "package": "docs/presentation; bench",
+      "dependencies": [
+        "A30"
+      ],
+      "acceptance": [
+        "Explain AI assistance versus verified evidence and human authority",
+        "Include negative results and limitations",
+        "Slides/abstract align with report and final measurements"
+      ],
+      "deliverable": "Prepare final presentation and reproducible results",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "A32",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M8][A32] Polish final demo evidence and dashboard explanations",
+      "package": "web; docs/demo",
+      "dependencies": [
+        "A27",
+        "A29",
+        "A20"
+      ],
+      "acceptance": [
+        "Final demo shows uncertainty, evidence, copy search, approvals and restore",
+        "No perfect-detection or injection-immunity claims",
+        "Fresh reviewer can follow the documented workflow"
+      ],
+      "deliverable": "Polish final demo evidence and dashboard explanations",
+      "labels": [],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S15",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M8][S15] Complete v1.0 security sign-off and fresh-reviewer gate",
+      "package": "docs/releases",
+      "dependencies": [
+        "C31",
+        "C32",
+        "A29",
+        "A30",
+        "A32"
+      ],
+      "acceptance": [
+        "Both owners review fresh-reviewer full-demo evidence",
+        "Tag and publish only after cross-review and passing checks",
+        "Keep repository visibility/membership and irreversible settings for explicit owner confirmation"
+      ],
+      "deliverable": "Complete v1.0 security sign-off and fresh-reviewer gate",
+      "labels": [
+        "security"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "S16",
+      "month": 8,
+      "relative_weeks": "W29-W32",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M8][S16] Finalise report and prepare post-release launch kit",
+      "package": "docs/reports; docs/community",
+      "dependencies": [
+        "S15",
+        "A31"
+      ],
+      "acceptance": [
+        "Final report and abstract include all chapters and limitations",
+        "Prepare launch posts a few days after verified tag; awesome-list PRs and talk submissions are drafts",
+        "Both owners approve claims and publication destinations before external outreach"
+      ],
+      "deliverable": "Finalise report and prepare post-release launch kit",
+      "labels": [
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 13, 15, 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G01",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][G01] Add synthetic malformed MIME fixture",
+      "package": "tests/fixtures",
+      "dependencies": [
+        "C02"
+      ],
+      "acceptance": [
+        "Add one invented message with malformed nesting",
+        "Assert bounded parser failure without crash",
+        "Document fixture purpose"
+      ],
+      "deliverable": "Add synthetic malformed MIME fixture",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G02",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][G02] Add legitimate-but-urgent synthetic message",
+      "package": "bench/data",
+      "dependencies": [
+        "A01"
+      ],
+      "acceptance": [
+        "Use invented brand and .test domain",
+        "Record label rationale and provenance",
+        "Keep fixture out of frozen evaluation sets"
+      ],
+      "deliverable": "Add legitimate-but-urgent synthetic message",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G03",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][G03] Document IMAP provider error example",
+      "package": "docs/connectors",
+      "dependencies": [
+        "C05"
+      ],
+      "acceptance": [
+        "Use sanitised mocked error",
+        "Explain retryable versus terminal behaviour",
+        "No credentials or real mailbox identifiers"
+      ],
+      "deliverable": "Document IMAP provider error example",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G04",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][G04] Add accessible mock dashboard empty state",
+      "package": "web",
+      "dependencies": [
+        "A08"
+      ],
+      "acceptance": [
+        "Keyboard and screen-reader labels work",
+        "Display no-cases message against fixture API",
+        "No production backend required"
+      ],
+      "deliverable": "Add accessible mock dashboard empty state",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G05",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][G05] Explain unknown domain-age lookup",
+      "package": "docs/checks",
+      "dependencies": [
+        "C03"
+      ],
+      "acceptance": [
+        "Describe timeout/unknown distinctly from safe",
+        "Use mock response",
+        "Link contract field and test"
+      ],
+      "deliverable": "Explain unknown domain-age lookup",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G06",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][G06] Add one injection starter fixture",
+      "package": "tests/security",
+      "dependencies": [
+        "A07"
+      ],
+      "acceptance": [
+        "Use inert synthetic hostile instructions",
+        "Name expected behaviour and category",
+        "Do not alter frozen test manifests"
+      ],
+      "deliverable": "Add one injection starter fixture",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G07",
+      "month": 3,
+      "relative_weeks": "Prepared in M2; implementation from M3, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][G07] Document screenshot timeout example",
+      "package": "docs/api",
+      "dependencies": [
+        "C11"
+      ],
+      "acceptance": [
+        "Use synthetic screenshot ID",
+        "Show timeout and missing evidence",
+        "No live target needed"
+      ],
+      "deliverable": "Document screenshot timeout example",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G08",
+      "month": 3,
+      "relative_weeks": "Prepared in M2; implementation from M3, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M3][G08] Improve case reason accessibility",
+      "package": "web",
+      "dependencies": [
+        "A12"
+      ],
+      "acceptance": [
+        "Use fixture reasons/uncertainty",
+        "Check keyboard focus and text alternatives",
+        "No attacker HTML rendering"
+      ],
+      "deliverable": "Improve case reason accessibility",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G09",
+      "month": 3,
+      "relative_weeks": "Prepared in M2; implementation from M3, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][G09] Add check-plugin tutorial fixture",
+      "package": "examples/plugins",
+      "dependencies": [
+        "C12"
+      ],
+      "acceptance": [
+        "Use deterministic invented evidence",
+        "Show success and unknown lookup",
+        "Pass contract tests"
+      ],
+      "deliverable": "Add check-plugin tutorial fixture",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G10",
+      "month": 4,
+      "relative_weeks": "Prepared in M2; implementation from M4, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M4][G10] Document a data-only invented brand template",
+      "package": "brands",
+      "dependencies": [
+        "A13"
+      ],
+      "acceptance": [
+        "Use invented brand and lab domain",
+        "Include provenance and expected domain",
+        "No executable contribution"
+      ],
+      "deliverable": "Document a data-only invented brand template",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "enhancement"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G11",
+      "month": 4,
+      "relative_weeks": "Prepared in M2; implementation from M4, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][G11] Write authorised mailbox scope example",
+      "package": "docs/connectors",
+      "dependencies": [
+        "C15"
+      ],
+      "acceptance": [
+        "Use lab-only mailbox names",
+        "Show allow and deny examples",
+        "Explain pagination/partial failure"
+      ],
+      "deliverable": "Write authorised mailbox scope example",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G12",
+      "month": 2,
+      "relative_weeks": "Prepared in M2; implementation from M2, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M2][G12] Add confusion-matrix explanation",
+      "package": "docs/evaluation",
+      "dependencies": [
+        "A02"
+      ],
+      "acceptance": [
+        "Use explicitly illustrative values",
+        "Explain false positives/negatives",
+        "Do not claim benchmark results"
+      ],
+      "deliverable": "Add confusion-matrix explanation",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G13",
+      "month": 5,
+      "relative_weeks": "Prepared in M2; implementation from M5, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M5][G13] Document redacted audit example",
+      "package": "docs/operations",
+      "dependencies": [
+        "C20"
+      ],
+      "acceptance": [
+        "Use invented case/target IDs",
+        "Show proposer, approver and restore",
+        "No tokens or message bodies"
+      ],
+      "deliverable": "Document redacted audit example",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G14",
+      "month": 5,
+      "relative_weeks": "Prepared in M2; implementation from M5, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M5][G14] Document reliability-plot interpretation",
+      "package": "docs/evaluation",
+      "dependencies": [
+        "A17"
+      ],
+      "acceptance": [
+        "Use labelled illustrative plot/data",
+        "Explain calibration versus accuracy",
+        "Link reproducible benchmark command"
+      ],
+      "deliverable": "Document reliability-plot interpretation",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G15",
+      "month": 6,
+      "relative_weeks": "Prepared in M2; implementation from M6, after listed prerequisites",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][G15] Improve clean-install troubleshooting",
+      "package": "docs/operations",
+      "dependencies": [
+        "C24"
+      ],
+      "acceptance": [
+        "Reproduce one local setup error",
+        "Document safe remedy",
+        "Test from clean environment"
+      ],
+      "deliverable": "Improve clean-install troubleshooting",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    },
+    {
+      "key": "G16",
+      "month": 6,
+      "relative_weeks": "Prepared in M2; implementation from M6, after listed prerequisites",
+      "track": "ai",
+      "lead": "RishithaDama",
+      "reviewer": "k-Darshan-chowdary",
+      "title": "[M6][G16] Add benchmark limitations glossary",
+      "package": "docs/evaluation",
+      "dependencies": [
+        "A21"
+      ],
+      "acceptance": [
+        "Explain frozen data, ablation and attack success",
+        "Reference methodology",
+        "No invented numerical claims"
+      ],
+      "deliverable": "Add benchmark limitations glossary",
+      "labels": [
+        "good first issue",
+        "help wanted",
+        "docs"
+      ],
+      "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
+      "status": "planned"
+    }
+  ]
+}
