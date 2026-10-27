@@ -1,0 +1,13 @@
+From: FableBank Lab <lab@fablebank.test>
+Subject: Synthetic MIME lab
+Content-Type: multipart/alternative; boundary="lab"
+
+--lab
+Content-Type: text/plain
+
+Plain lab
+--lab
+Content-Type: text/html
+
+<p>HTML lab</p>
+--lab--
