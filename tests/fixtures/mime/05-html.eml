@@ -1,0 +1,5 @@
+From: FableBank Lab <lab@fablebank.test>
+Subject: Synthetic MIME lab
+Content-Type: text/html; charset=utf-8
+
+<p>Lab <a href="https://fablebank.test/login?a=1&amp;b=2">link</a></p><script>secret_script()</script>

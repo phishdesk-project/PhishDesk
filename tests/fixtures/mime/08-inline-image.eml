@@ -1,0 +1,15 @@
+From: FableBank Lab <lab@fablebank.test>
+Subject: Synthetic MIME lab
+Content-Type: multipart/related; boundary="lab"
+
+--lab
+Content-Type: text/plain
+
+See image
+--lab
+Content-Type: image/png
+Content-Disposition: inline; filename="qr.png"
+Content-Transfer-Encoding: base64
+
+bm90LWFuLWltYWdl
+--lab--

@@ -34,6 +34,7 @@ jobs:
       - run: python scripts/export_contracts.py --check
       - run: python scripts/check_roadmap.py
       - run: python -m phishdesk.demo
+      - run: python -m phishdesk.parsing.demo tests/fixtures/mime
   container-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 15

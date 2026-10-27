@@ -3,10 +3,15 @@ Open-source, self-hosted phishing triage and response platform with AI-powered a
 
 ## Current state
 
-**Foundation only; all product capabilities below are planned.** This branch adds
+**Foundation and synthetic MIME parsing only.** This branch adds
 draft contracts, a safe offline synthetic demo and a fixture-only mock API so both
 owners can begin in parallel. It does not yet ingest mail, detect phishing, visit
 URLs, authenticate real cases, run a model or execute mailbox actions.
+
+C02 adds an offline, bounded synthetic `.eml` parser that returns the existing
+Evidence v1 contract. See [parser limits and failure states](docs/parsing.md).
+Run the 20-message fixture demo with
+`python -m phishdesk.parsing.demo tests/fixtures/mime`. It prints metadata only.
 
 Darshan (@k-Darshan-chowdary) leads cybersecurity/backend. Rishitha (@RishithaDama)
 leads AI/ML and the React dashboard. Ownership is equal; reviews, contracts,

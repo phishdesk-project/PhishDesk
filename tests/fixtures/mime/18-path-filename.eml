@@ -1,0 +1,10 @@
+From: FableBank Lab <lab@fablebank.test>
+Subject: Synthetic MIME lab
+Content-Type: multipart/mixed; boundary="lab"
+
+--lab
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="../../lab.txt"
+
+lab
+--lab--
