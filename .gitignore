@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# PhishDesk local data and frontend builds
+.venv-*/
+.env.*
+!.env.example
+node_modules/
+web/dist/
+bench/data/private/
+models/
+artifacts/
+*.pem
+*.key
+*.p12
+*.pfx

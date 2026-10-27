@@ -1,0 +1,13 @@
+# Synthetic mock only. This is not a browser sandbox or a production deployment.
+services:
+  mock-api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m

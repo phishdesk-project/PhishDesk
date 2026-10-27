@@ -1,0 +1,551 @@
+{
+  "components": {
+    "schemas": {
+      "Attachment": {
+        "additionalProperties": false,
+        "properties": {
+          "filename": {
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Filename",
+            "type": "string"
+          },
+          "id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "sha256": {
+            "anyOf": [
+              {
+                "pattern": "^[a-f0-9]{64}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sha256"
+          },
+          "size_bytes": {
+            "minimum": 0.0,
+            "title": "Size Bytes",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "filename",
+          "size_bytes"
+        ],
+        "title": "Attachment",
+        "type": "object"
+      },
+      "AuthenticationSignal": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "mechanism": {
+            "enum": [
+              "spf",
+              "dkim",
+              "dmarc"
+            ],
+            "title": "Mechanism",
+            "type": "string"
+          },
+          "provenance": {
+            "enum": [
+              "trusted_ingress",
+              "unverified_header",
+              "not_checked"
+            ],
+            "title": "Provenance",
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "pass",
+              "fail",
+              "unknown",
+              "not_checked"
+            ],
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "mechanism",
+          "result",
+          "provenance"
+        ],
+        "title": "AuthenticationSignal",
+        "type": "object"
+      },
+      "EvidenceV1": {
+        "additionalProperties": false,
+        "properties": {
+          "attachments": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/Attachment"
+            },
+            "maxItems": 100,
+            "title": "Attachments",
+            "type": "array"
+          },
+          "authentication": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/AuthenticationSignal"
+            },
+            "maxItems": 3,
+            "title": "Authentication",
+            "type": "array"
+          },
+          "body_text": {
+            "maxLength": 100000,
+            "title": "Body Text",
+            "type": "string"
+          },
+          "case_id": {
+            "format": "uuid",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "findings": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/Finding"
+            },
+            "maxItems": 200,
+            "title": "Findings",
+            "type": "array"
+          },
+          "from_address": {
+            "maxLength": 1000,
+            "title": "From Address",
+            "type": "string"
+          },
+          "links": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/Link"
+            },
+            "maxItems": 200,
+            "title": "Links",
+            "type": "array"
+          },
+          "missing_evidence": {
+            "default": [],
+            "items": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "title": "Missing Evidence",
+            "type": "array"
+          },
+          "reply_to": {
+            "anyOf": [
+              {
+                "maxLength": 1000,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reply To"
+          },
+          "sandbox_artifacts": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/SandboxArtifact"
+            },
+            "maxItems": 200,
+            "title": "Sandbox Artifacts",
+            "type": "array"
+          },
+          "sandbox_state": {
+            "default": "not_run",
+            "enum": [
+              "not_run",
+              "succeeded",
+              "failed",
+              "timeout"
+            ],
+            "title": "Sandbox State",
+            "type": "string"
+          },
+          "schema_version": {
+            "const": "evidence.v1",
+            "default": "evidence.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "synthetic",
+              "imap",
+              "gmail",
+              "graph"
+            ],
+            "title": "Source",
+            "type": "string"
+          },
+          "subject": {
+            "maxLength": 1000,
+            "title": "Subject",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_id",
+          "source",
+          "subject",
+          "body_text",
+          "from_address"
+        ],
+        "title": "EvidenceV1",
+        "type": "object"
+      },
+      "Finding": {
+        "additionalProperties": false,
+        "properties": {
+          "check": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Check",
+            "type": "string"
+          },
+          "confidence": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "type": "number"
+          },
+          "detail": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Detail",
+            "type": "string"
+          },
+          "evidence_refs": {
+            "items": {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "title": "Evidence Refs",
+            "type": "array"
+          },
+          "id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "Safe",
+              "Suspicious",
+              "Dangerous"
+            ],
+            "title": "Severity",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "check",
+          "severity",
+          "confidence",
+          "detail",
+          "evidence_refs"
+        ],
+        "title": "Finding",
+        "type": "object"
+      },
+      "Link": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "value": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "value"
+        ],
+        "title": "Link",
+        "type": "object"
+      },
+      "ModelSignal": {
+        "additionalProperties": false,
+        "properties": {
+          "model_id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Model Id",
+            "type": "string"
+          },
+          "model_version": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Model Version",
+            "type": "string"
+          },
+          "score": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score",
+            "type": "number"
+          }
+        },
+        "required": [
+          "model_id",
+          "model_version",
+          "score"
+        ],
+        "title": "ModelSignal",
+        "type": "object"
+      },
+      "Reason": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence_refs": {
+            "items": {
+              "maxLength": 200,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "title": "Evidence Refs",
+            "type": "array"
+          },
+          "summary": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary",
+          "evidence_refs"
+        ],
+        "title": "Reason",
+        "type": "object"
+      },
+      "SandboxArtifact": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "screenshot",
+              "redirect",
+              "form",
+              "resource"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "summary"
+        ],
+        "title": "SandboxArtifact",
+        "type": "object"
+      },
+      "VerdictV1": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "format": "uuid",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "confidence": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "type": "number"
+          },
+          "injection_flags": {
+            "default": [],
+            "items": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "title": "Injection Flags",
+            "type": "array"
+          },
+          "label": {
+            "enum": [
+              "Safe",
+              "Suspicious",
+              "Dangerous"
+            ],
+            "title": "Label",
+            "type": "string"
+          },
+          "model_signals": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/ModelSignal"
+            },
+            "maxItems": 20,
+            "title": "Model Signals",
+            "type": "array"
+          },
+          "reasons": {
+            "items": {
+              "$ref": "#/components/schemas/Reason"
+            },
+            "maxItems": 30,
+            "minItems": 1,
+            "title": "Reasons",
+            "type": "array"
+          },
+          "schema_version": {
+            "const": "verdict.v1",
+            "default": "verdict.v1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "uncertainty": {
+            "items": {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            "maxItems": 100,
+            "title": "Uncertainty",
+            "type": "array"
+          }
+        },
+        "required": [
+          "case_id",
+          "label",
+          "confidence",
+          "reasons",
+          "uncertainty"
+        ],
+        "title": "VerdictV1",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "Fixture-only development API. No authentication, real mail, models, sandbox navigation or remediation. Bind to loopback only.",
+    "title": "PhishDesk synthetic mock API",
+    "version": "0.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "Response Health Health Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/v1/demo/evidence": {
+      "get": {
+        "operationId": "demo_evidence_v1_demo_evidence_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidenceV1"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Demo Evidence"
+      }
+    },
+    "/v1/demo/verdict": {
+      "get": {
+        "operationId": "demo_verdict_v1_demo_verdict_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VerdictV1"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Demo Verdict"
+      }
+    }
+  }
+}

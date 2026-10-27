@@ -1,0 +1,19 @@
+name: Bug report
+description: Reproduce a non-sensitive defect using synthetic data
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include secrets, private emails or sensitive vulnerability details. See SECURITY.md.
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction, expected and actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Version, environment and sanitised evidence
+    validations:
+      required: true

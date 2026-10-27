@@ -1,0 +1,10 @@
+.git
+.venv
+.env*
+**/__pycache__
+**/*.eml
+**/*.pem
+**/*.key
+tests
+bench
+node_modules

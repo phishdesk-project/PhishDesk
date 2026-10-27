@@ -1,0 +1,344 @@
+{
+  "$defs": {
+    "Attachment": {
+      "additionalProperties": false,
+      "properties": {
+        "filename": {
+          "maxLength": 255,
+          "minLength": 1,
+          "title": "Filename",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "size_bytes": {
+          "minimum": 0,
+          "title": "Size Bytes",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "filename",
+        "size_bytes"
+      ],
+      "title": "Attachment",
+      "type": "object"
+    },
+    "AuthenticationSignal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism": {
+          "enum": [
+            "spf",
+            "dkim",
+            "dmarc"
+          ],
+          "title": "Mechanism",
+          "type": "string"
+        },
+        "provenance": {
+          "enum": [
+            "trusted_ingress",
+            "unverified_header",
+            "not_checked"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail",
+            "unknown",
+            "not_checked"
+          ],
+          "title": "Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "mechanism",
+        "result",
+        "provenance"
+      ],
+      "title": "AuthenticationSignal",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "check": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Check",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "detail": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Detail",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "maxLength": 200,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "type": "string"
+          },
+          "maxItems": 30,
+          "minItems": 1,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "Safe",
+            "Suspicious",
+            "Dangerous"
+          ],
+          "title": "Severity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "check",
+        "severity",
+        "confidence",
+        "detail",
+        "evidence_refs"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "Link": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ],
+      "title": "Link",
+      "type": "object"
+    },
+    "SandboxArtifact": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "screenshot",
+            "redirect",
+            "form",
+            "resource"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "summary"
+      ],
+      "title": "SandboxArtifact",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "attachments": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Attachment"
+      },
+      "maxItems": 100,
+      "title": "Attachments",
+      "type": "array"
+    },
+    "authentication": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/AuthenticationSignal"
+      },
+      "maxItems": 3,
+      "title": "Authentication",
+      "type": "array"
+    },
+    "body_text": {
+      "maxLength": 100000,
+      "title": "Body Text",
+      "type": "string"
+    },
+    "case_id": {
+      "format": "uuid",
+      "title": "Case Id",
+      "type": "string"
+    },
+    "findings": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Finding"
+      },
+      "maxItems": 200,
+      "title": "Findings",
+      "type": "array"
+    },
+    "from_address": {
+      "maxLength": 1000,
+      "title": "From Address",
+      "type": "string"
+    },
+    "links": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Link"
+      },
+      "maxItems": 200,
+      "title": "Links",
+      "type": "array"
+    },
+    "missing_evidence": {
+      "default": [],
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Missing Evidence",
+      "type": "array"
+    },
+    "reply_to": {
+      "anyOf": [
+        {
+          "maxLength": 1000,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Reply To"
+    },
+    "sandbox_artifacts": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/SandboxArtifact"
+      },
+      "maxItems": 200,
+      "title": "Sandbox Artifacts",
+      "type": "array"
+    },
+    "sandbox_state": {
+      "default": "not_run",
+      "enum": [
+        "not_run",
+        "succeeded",
+        "failed",
+        "timeout"
+      ],
+      "title": "Sandbox State",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "evidence.v1",
+      "default": "evidence.v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source": {
+      "enum": [
+        "synthetic",
+        "imap",
+        "gmail",
+        "graph"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "subject": {
+      "maxLength": 1000,
+      "title": "Subject",
+      "type": "string"
+    }
+  },
+  "required": [
+    "case_id",
+    "source",
+    "subject",
+    "body_text",
+    "from_address"
+  ],
+  "title": "EvidenceV1",
+  "type": "object"
+}

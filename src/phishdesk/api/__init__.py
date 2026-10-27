@@ -1,0 +1,1 @@
+"""Synthetic mock API package."""

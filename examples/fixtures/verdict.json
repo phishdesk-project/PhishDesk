@@ -1,0 +1,19 @@
+{
+  "case_id": "00000000-0000-4000-8000-000000000001",
+  "confidence": 0.5,
+  "injection_flags": [],
+  "label": "Suspicious",
+  "model_signals": [],
+  "reasons": [
+    {
+      "evidence_refs": [
+        "finding.lab"
+      ],
+      "summary": "Fixture-only result; no phishing detection has run"
+    }
+  ],
+  "schema_version": "verdict.v1",
+  "uncertainty": [
+    "Synthetic mock only; missing authentication and sandbox evidence"
+  ]
+}

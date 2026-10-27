@@ -1,0 +1,25 @@
+name: Planned task
+description: One scoped deliverable with a lead, reviewer and evidence
+title: "[M?] "
+body:
+  - type: textarea
+    id: ownership
+    attributes:
+      label: Phase, lead, reviewer and source
+      description: Relative Month 1-8, lead, other owner as reviewer, v2 PDF section and source package.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable and acceptance criteria
+      description: Concrete tasks and observable success/failure cases. Planned is not completed.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and verification
+      description: Link prerequisites, test/fixture evidence, docs and definition of done. No calendar deadline required.
+    validations:
+      required: true

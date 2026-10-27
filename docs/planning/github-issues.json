@@ -1,0 +1,386 @@
+{
+  "C01": {
+    "number": 1,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/1"
+  },
+  "C02": {
+    "number": 8,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/8"
+  },
+  "C03": {
+    "number": 9,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/9"
+  },
+  "C04": {
+    "number": 2,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/2"
+  },
+  "A01": {
+    "number": 3,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/3"
+  },
+  "A02": {
+    "number": 4,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/4"
+  },
+  "A03": {
+    "number": 5,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/5"
+  },
+  "A04": {
+    "number": 10,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/10"
+  },
+  "S01": {
+    "number": 6,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/6"
+  },
+  "S02": {
+    "number": 7,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/7"
+  },
+  "C05": {
+    "number": 11,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/11"
+  },
+  "C06": {
+    "number": 12,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/12"
+  },
+  "C07": {
+    "number": 13,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/13"
+  },
+  "C08": {
+    "number": 14,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/14"
+  },
+  "A05": {
+    "number": 15,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/15"
+  },
+  "A06": {
+    "number": 16,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/16"
+  },
+  "A07": {
+    "number": 17,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/17"
+  },
+  "A08": {
+    "number": 18,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/18"
+  },
+  "S03": {
+    "number": 19,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/19"
+  },
+  "S04": {
+    "number": 20,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/20"
+  },
+  "C09": {
+    "number": 21,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/21"
+  },
+  "C10": {
+    "number": 22,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/22"
+  },
+  "C11": {
+    "number": 23,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/23"
+  },
+  "C12": {
+    "number": 24,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/24"
+  },
+  "A09": {
+    "number": 25,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/25"
+  },
+  "A10": {
+    "number": 26,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/26"
+  },
+  "A11": {
+    "number": 27,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/27"
+  },
+  "A12": {
+    "number": 28,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/28"
+  },
+  "S05": {
+    "number": 29,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/29"
+  },
+  "S06": {
+    "number": 30,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/30"
+  },
+  "C13": {
+    "number": 31,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/31"
+  },
+  "C14": {
+    "number": 32,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/32"
+  },
+  "C15": {
+    "number": 33,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/33"
+  },
+  "C16": {
+    "number": 37,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/37"
+  },
+  "A13": {
+    "number": 34,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/34"
+  },
+  "A14": {
+    "number": 35,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/35"
+  },
+  "A15": {
+    "number": 36,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/36"
+  },
+  "A16": {
+    "number": 38,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/38"
+  },
+  "S07": {
+    "number": 39,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/39"
+  },
+  "S08": {
+    "number": 40,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/40"
+  },
+  "C17": {
+    "number": 41,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/41"
+  },
+  "C18": {
+    "number": 42,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/42"
+  },
+  "C19": {
+    "number": 43,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/43"
+  },
+  "C20": {
+    "number": 44,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/44"
+  },
+  "A17": {
+    "number": 45,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/45"
+  },
+  "A18": {
+    "number": 46,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/46"
+  },
+  "A19": {
+    "number": 47,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/47"
+  },
+  "A20": {
+    "number": 48,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/48"
+  },
+  "S09": {
+    "number": 49,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/49"
+  },
+  "S10": {
+    "number": 50,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/50"
+  },
+  "C21": {
+    "number": 51,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/51"
+  },
+  "C22": {
+    "number": 52,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/52"
+  },
+  "C23": {
+    "number": 53,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/53"
+  },
+  "C24": {
+    "number": 54,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/54"
+  },
+  "A21": {
+    "number": 55,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/55"
+  },
+  "A22": {
+    "number": 56,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/56"
+  },
+  "A23": {
+    "number": 57,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/57"
+  },
+  "A24": {
+    "number": 58,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/58"
+  },
+  "S11": {
+    "number": 59,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/59"
+  },
+  "S12": {
+    "number": 60,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/60"
+  },
+  "C25": {
+    "number": 61,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/61"
+  },
+  "C26": {
+    "number": 62,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/62"
+  },
+  "C27": {
+    "number": 63,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/63"
+  },
+  "C28": {
+    "number": 68,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/68"
+  },
+  "A25": {
+    "number": 64,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/64"
+  },
+  "A26": {
+    "number": 65,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/65"
+  },
+  "A27": {
+    "number": 66,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/66"
+  },
+  "A28": {
+    "number": 67,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/67"
+  },
+  "S13": {
+    "number": 69,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/69"
+  },
+  "S14": {
+    "number": 70,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/70"
+  },
+  "C29": {
+    "number": 71,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/71"
+  },
+  "C30": {
+    "number": 72,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/72"
+  },
+  "C31": {
+    "number": 73,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/73"
+  },
+  "C32": {
+    "number": 78,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/78"
+  },
+  "A29": {
+    "number": 74,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/74"
+  },
+  "A30": {
+    "number": 75,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/75"
+  },
+  "A31": {
+    "number": 76,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/76"
+  },
+  "A32": {
+    "number": 77,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/77"
+  },
+  "S15": {
+    "number": 79,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/79"
+  },
+  "S16": {
+    "number": 80,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/80"
+  },
+  "G01": {
+    "number": 81,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/81"
+  },
+  "G02": {
+    "number": 82,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/82"
+  },
+  "G03": {
+    "number": 83,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/83"
+  },
+  "G04": {
+    "number": 84,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/84"
+  },
+  "G05": {
+    "number": 85,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/85"
+  },
+  "G06": {
+    "number": 86,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/86"
+  },
+  "G07": {
+    "number": 87,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/87"
+  },
+  "G08": {
+    "number": 88,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/88"
+  },
+  "G09": {
+    "number": 89,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/89"
+  },
+  "G10": {
+    "number": 90,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/90"
+  },
+  "G11": {
+    "number": 91,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/91"
+  },
+  "G12": {
+    "number": 92,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/92"
+  },
+  "G13": {
+    "number": 93,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/93"
+  },
+  "G14": {
+    "number": 94,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/94"
+  },
+  "G15": {
+    "number": 95,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/95"
+  },
+  "G16": {
+    "number": 96,
+    "url": "https://github.com/phishdesk-project/PhishDesk/issues/96"
+  }
+}
