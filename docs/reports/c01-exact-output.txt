@@ -1,0 +1,112 @@
+$ python --version
+Python 3.13.1
+EXIT_CODE=0
+
+$ python -m pip check
+No broken requirements found.
+EXIT_CODE=0
+
+$ python -m ruff check src tests scripts
+All checks passed!
+EXIT_CODE=0
+
+$ python -m ruff format --check src tests scripts
+21 files already formatted
+EXIT_CODE=0
+
+$ python -m mypy
+Success: no issues found in 7 source files
+EXIT_CODE=0
+
+$ python -m pytest -q
+........................                                                 [100%]
+============================== warnings summary ===============================
+..\..\..\..\2026-10-27\referenced-chatgpt-conversation-this-is-an\work\c01-venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\User\Documents\Codex\2026-10-27\referenced-chatgpt-conversation-this-is-an\work\c01-venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+24 passed, 1 warning in 0.72s
+EXIT_CODE=0
+
+$ python scripts/export_contracts.py --check
+EXIT_CODE=0
+
+$ python scripts/check_roadmap.py
+96 undated tasks; all eight phases; cross-review and dependency graph valid
+EXIT_CODE=0
+
+$ python -m phishdesk.demo
+{
+  "mode": "synthetic_mock",
+  "evidence": {
+    "schema_version": "evidence.v1",
+    "case_id": "00000000-0000-4000-8000-000000000001",
+    "source": "synthetic",
+    "subject": "FableBank lab account reminder",
+    "body_text": "Invented message for contract development. No link visits or mailbox actions.",
+    "from_address": "lab@fablebank.test",
+    "reply_to": null,
+    "authentication": [],
+    "links": [],
+    "attachments": [],
+    "sandbox_artifacts": [],
+    "sandbox_state": "not_run",
+    "findings": [
+      {
+        "id": "finding.lab",
+        "check": "synthetic_fixture",
+        "severity": "Suspicious",
+        "confidence": 1.0,
+        "detail": "Deliberately suspicious synthetic lab case",
+        "evidence_refs": [
+          "message.subject"
+        ]
+      }
+    ],
+    "missing_evidence": [
+      "Authentication and sandbox checks have not run"
+    ]
+  },
+  "verdict": {
+    "schema_version": "verdict.v1",
+    "case_id": "00000000-0000-4000-8000-000000000001",
+    "label": "Suspicious",
+    "confidence": 0.5,
+    "reasons": [
+      {
+        "summary": "Fixture-only result; no phishing detection has run",
+        "evidence_refs": [
+          "finding.lab"
+        ]
+      }
+    ],
+    "uncertainty": [
+      "Synthetic mock only; missing authentication and sandbox evidence"
+    ],
+    "model_signals": [],
+    "injection_flags": []
+  }
+}
+EXIT_CODE=0
+
+$ installed-package smoke from outside repo
+Installed package imports outside repo; health OK; actions/cases unavailable
+C:\Users\User\Documents\Codex\2026-10-27\referenced-chatgpt-conversation-this-is-an\work\c01-venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+EXIT_CODE=0
+
+$ documented uvicorn command (test port 18761), loopback health with synthetic query canary
+{"timestamp": "2026-10-27T16:42:52.774434+00:00", "level": "INFO", "event": "runtime_log"}
+{"timestamp": "2026-10-27T16:42:52.774745+00:00", "level": "INFO", "event": "runtime_log"}
+{"timestamp": "2026-10-27T16:42:52.776325+00:00", "level": "INFO", "event": "runtime_log"}
+{"timestamp": "2026-10-27T16:42:52.776809+00:00", "level": "INFO", "event": "runtime_log"}
+PASS: health synthetic_mock; all stderr JSON metadata only; no query canary
+
+
+$ python -m pip_audit -r requirements.lock
+No known vulnerabilities found
+EXIT_CODE=0
+
+$ git diff --exit-code origin/main -- docs/planning
+EXIT_CODE=0 (no output; v2 roadmap unchanged)
