@@ -47,7 +47,7 @@ The command performs no model calls, network requests or mailbox actions.
 For Rishitha's dashboard development:
 
 ```sh
-uvicorn phishdesk.api.app:app --host 127.0.0.1 --port 8000 --no-access-log
+uvicorn phishdesk.api.app:app --host 127.0.0.1 --port 8000 --no-access-log --log-config deploy/logging.json
 ```
 
 Open `http://127.0.0.1:8000/docs`. Available routes are `/health`,
@@ -55,6 +55,12 @@ Open `http://127.0.0.1:8000/docs`. Available routes are `/health`,
 and [JSON fixtures](examples/fixtures) can be used without a running backend.
 This mock has no authentication: bind to loopback and use synthetic fixtures only.
 The real case API and React implementation remain planned issues.
+
+Use the logging configuration above for the mock server. It writes JSON metadata
+only (UTC timestamp, level, generic runtime event). Messages, arguments, extras,
+exception text/tracebacks and request data are deliberately omitted; access logs
+are disabled. Do not add credentials or email content to logs. The offline demo
+prints its explicitly synthetic fixture to stdout; it is not a real-mail CLI.
 
 Optional Docker mock:
 
