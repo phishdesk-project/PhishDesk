@@ -1,4 +1,8 @@
-# Deterministic evidence checks
+# Deterministic evidence checks (C03)
 
-Lead: Darshan. Planned work; this directory is a handoff boundary, not an implemented feature.
-See the issue roadmap and v2 plan. Use synthetic/licensed data and cross-review.
+Lead: Darshan; cross-review: Rishitha. Bounded offline sender, authentication
+provenance, URL structure, configured lookalike and domain-age observations enrich
+the unchanged Evidence v1 contract. See [API, limits and interpretation](../../../docs/checks.md).
+
+Run `python -m phishdesk.checks.demo` from the repository root for five synthetic
+C02 -> C03 -> scripted Verdict exchanges. No network, AI or mailbox activity.

@@ -1,0 +1,8 @@
+From: lab@fablebank.test
+Subject: Synthetic URL structure
+
+Inert reserved documentation addresses and invented domains:
+http://192.0.2.1:8080/lab
+https://fablebank.test@other.test/lab
+https://fablebank.test.other.test/lab
+https://[2001:db8::1]/lab
