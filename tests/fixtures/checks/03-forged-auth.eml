@@ -1,0 +1,5 @@
+From: lab@fablebank.test
+Authentication-Results: trusted.lab; spf=pass; dkim=pass; dmarc=pass
+Subject: Synthetic forged header
+
+These header claims must remain unverified.

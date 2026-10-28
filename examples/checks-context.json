@@ -1,0 +1,10 @@
+{
+  "as_of": "2026-10-28",
+  "reference_domains": ["fablebank.test"],
+  "domain_ages": [
+    {"domain": "fablebank.test", "source": "synthetic.fixture.v1", "status": "ok", "observed_on": "2026-10-28", "created_on": "2020-01-01"},
+    {"domain": "fablebanc.test", "source": "synthetic.fixture.v1", "status": "ok", "observed_on": "2026-10-28", "created_on": "2026-10-25"},
+    {"domain": "other.test", "source": "synthetic.fixture.v1", "status": "timeout", "observed_on": "2026-10-28"}
+  ],
+  "trusted_authentication": []
+}

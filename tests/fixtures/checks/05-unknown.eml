@@ -1,0 +1,7 @@
+From: lab@other.test
+Reply-To: malformed
+Subject: Synthetic lookup failure and malformed URL
+
+Offline age observation timed out. No safety inference.
+https://other.test/lab
+https://fablebank.test:99999/lab
