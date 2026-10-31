@@ -219,6 +219,15 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# raw public data
+data/raw/public/
+local_samples/
+*.mbox
+labels_*.csv
+*.part
+data/raw/synthetic/*.eml
+data/processed/
+
 # PhishDesk local data and frontend builds
 .venv-*/
 .env.*

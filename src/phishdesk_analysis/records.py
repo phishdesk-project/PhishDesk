@@ -12,7 +12,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
-# Keep in sync with data/SOURCES.md. Only approved sources belong here.
+# Every source in data/sources.json except "do-not-use" ones. A test checks they match.
 KNOWN_SOURCES = {"synthetic", "nazario", "spamassassin", "enron"}
 
 
@@ -71,7 +71,7 @@ class EmailRecord(BaseModel):
     def check_consistency(self) -> EmailRecord:
         if self.source not in KNOWN_SOURCES:
             raise ValueError(
-                f"unknown source '{self.source}': add it to data/SOURCES.md and KNOWN_SOURCES first"
+                f"unknown source '{self.source}': register it in data/sources.json first"
             )
         if self.is_phishing and self.category not in PHISHING_CATEGORIES:
             raise ValueError(

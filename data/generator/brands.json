@@ -1,0 +1,100 @@
+{
+  "organisation": {
+    "name": "Hollowmere Engineering",
+    "slug": "hollowmere",
+    "domain": "hollowmere.example",
+    "it_desk": "Hollowmere IT Service Desk",
+    "hr_team": "Hollowmere People Team"
+  },
+  "brands": [
+    {
+      "name": "Larkvale Payroll",
+      "slug": "larkvale",
+      "domain": "larkvale-payroll.example",
+      "kind": "payroll"
+    },
+    {
+      "name": "Mistrel Bank",
+      "slug": "mistrel",
+      "domain": "mistrel-bank.example",
+      "kind": "bank"
+    },
+    {
+      "name": "Corvane Cloud",
+      "slug": "corvane",
+      "domain": "corvane-cloud.example",
+      "kind": "cloud"
+    },
+    {
+      "name": "Pinequill Docs",
+      "slug": "pinequill",
+      "domain": "pinequill-docs.example",
+      "kind": "docs"
+    },
+    {
+      "name": "Swiftwen Parcel",
+      "slug": "swiftwen",
+      "domain": "swiftwen-parcel.example",
+      "kind": "courier"
+    },
+    {
+      "name": "Tallowbrook Supplies",
+      "slug": "tallowbrook",
+      "domain": "tallowbrook-supplies.example",
+      "kind": "supplier"
+    },
+    {
+      "name": "Quarrow Components",
+      "slug": "quarrow",
+      "domain": "quarrow-components.example",
+      "kind": "supplier"
+    },
+    {
+      "name": "Ambergrove Telecom",
+      "slug": "ambergrove",
+      "domain": "ambergrove-telecom.example",
+      "kind": "telecom"
+    },
+    {
+      "name": "Velmora Shop",
+      "slug": "velmora",
+      "domain": "velmora-shop.example",
+      "kind": "shop"
+    }
+  ],
+  "lure_domain_patterns": [
+    "{slug}-verify.test",
+    "secure-{slug}.test",
+    "{slug}-account.test",
+    "{slug}-support.test"
+  ],
+  "unknown_sender_domains": [
+    "mailnotice.test",
+    "account-alerts.test",
+    "freemail-box.test"
+  ],
+  "first_names": [
+    "Alex",
+    "Priya",
+    "Jordan",
+    "Mei",
+    "Samuel",
+    "Aisha",
+    "Tomas",
+    "Leila",
+    "Kofi",
+    "Hannah"
+  ],
+  "last_names": [
+    "Rowe",
+    "Okafor",
+    "Lindqvist",
+    "Tan",
+    "Moreno",
+    "Haddad",
+    "Novak",
+    "Iyer",
+    "Brennan",
+    "Sato"
+  ]
+}

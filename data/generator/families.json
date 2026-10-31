@@ -1,0 +1,188 @@
+{
+  "version": "0.1",
+  "families": [
+    {
+      "id": "cred-mailbox-full", "category": "credential", "held_back": false,
+      "brand_kind": null, "sender": "fake_it", "reply_to": "lure", "link_path": "mailbox/verify",
+      "attachment": null, "tactics": ["urgency", "impersonation", "link_lure"],
+      "subjects": ["Action required: mailbox storage {percent}% full", "Warning: your mailbox will stop receiving mail"],
+      "bodies": [
+        "Dear {recipient_first},\n\nYour mailbox has reached {percent}% of its storage limit. New messages will be rejected {deadline}.\n\nVerify your account to restore full storage:\n{link}\n\n{it_desk}",
+        "Hello {recipient_first},\n\nDue to a server upgrade, your email account must be re-validated {deadline} or it will stop sending and receiving messages.\n\nValidate now: {link}\n\nThank you,\n{it_desk}"
+      ]
+    },
+    {
+      "id": "cred-shared-document", "category": "credential", "held_back": false,
+      "brand_kind": "docs", "sender": "lure", "reply_to": "none", "link_path": "shared/view",
+      "attachment": null, "tactics": ["impersonation", "link_lure"],
+      "subjects": ["{sender_first} {sender_last} shared \"{doc_name}\" with you", "Document waiting for your signature: {doc_name}"],
+      "bodies": [
+        "{sender_first} {sender_last} has shared a document with you on {brand}.\n\nDocument: {doc_name}\n\nSign in to view: {link}\n\n{brand} - secure document sharing",
+        "You have a document waiting for review.\n\nFrom: {sender_first} {sender_last}\nFile: {doc_name}\n\nOpen the document and sign in with your work email to continue:\n{link}"
+      ]
+    },
+    {
+      "id": "cred-payroll-portal", "category": "credential", "held_back": true,
+      "brand_kind": "payroll", "sender": "lure", "reply_to": "none", "link_path": "payslip/login",
+      "attachment": null, "tactics": ["urgency", "impersonation", "link_lure"],
+      "subjects": ["Your payslip could not be delivered", "Confirm your payroll login to receive this month's salary"],
+      "bodies": [
+        "Hi {recipient_first},\n\nWe could not deliver your latest payslip. Confirm your login {deadline} to avoid a delay in salary payment.\n\n{link}\n\n{brand} Support",
+        "Dear employee,\n\nA payroll update requires all staff to confirm their account details {deadline}.\n\nConfirm here: {link}\n\nRegards,\n{brand}"
+      ]
+    },
+    {
+      "id": "pay-overdue-invoice", "category": "payment", "held_back": false,
+      "brand_kind": "supplier", "sender": "lure", "reply_to": "freemail", "link_path": null,
+      "attachment": {"filename": "invoice_{invoice_no}.html", "subtype": "html"},
+      "tactics": ["urgency", "impersonation", "attachment_lure"],
+      "subjects": ["OVERDUE: invoice {invoice_no}", "Final reminder - payment of {amount} outstanding"],
+      "bodies": [
+        "Hello,\n\nInvoice {invoice_no} for {amount} is now overdue. Please arrange payment {deadline} to avoid a late fee.\n\nThe invoice is attached.\n\nAccounts Receivable\n{brand}",
+        "Dear customer,\n\nOur records show {amount} is still outstanding on invoice {invoice_no}. Open the attached invoice and settle the balance {deadline}.\n\nKind regards,\n{brand} Accounts"
+      ]
+    },
+    {
+      "id": "pay-bank-details-change", "category": "payment", "held_back": false,
+      "brand_kind": "supplier", "sender": "lure", "reply_to": "freemail", "link_path": null,
+      "attachment": null, "tactics": ["impersonation"],
+      "subjects": ["Updated bank details for future payments", "Change of remittance account - {brand}"],
+      "bodies": [
+        "Dear Accounts Team,\n\nPlease note that {brand} has changed banks. From today, send all payments to our new account:\n\nAccount name: {brand} Ltd\nAccount number: {account_no}\nSort code: {sort_code}\n\nPlease confirm by reply once updated.\n\n{sender_first} {sender_last}\nFinance, {brand}",
+        "Hello,\n\nDue to an audit, our previous account is temporarily frozen. Please pay invoice {invoice_no} ({amount}) to:\n\nAccount number: {account_no}\nSort code: {sort_code}\n\nThanks,\n{sender_first} {sender_last}, {brand}"
+      ]
+    },
+    {
+      "id": "pay-manager-gift-cards", "category": "payment", "held_back": true,
+      "brand_kind": null, "sender": "spoofed_manager", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["urgency", "impersonation"],
+      "subjects": ["Quick favour", "Are you free? Need something urgently"],
+      "bodies": [
+        "Hi {recipient_first},\n\nI'm in meetings all day. I need you to buy {gift_count} gift cards of {gift_value} each for a client thank-you {deadline}. Send me the codes by email. I'll reimburse you.\n\n{sender_first}",
+        "{recipient_first}, can you handle a confidential payment for me {deadline}? I can't take calls right now. Reply and I'll send the details.\n\n{sender_first} {sender_last}"
+      ]
+    },
+    {
+      "id": "imp-parcel-form", "category": "impersonation", "held_back": false,
+      "brand_kind": "courier", "sender": "lure", "reply_to": "none", "link_path": null,
+      "attachment": {"filename": "delivery_form_{tracking_no}.html", "subtype": "html"},
+      "tactics": ["impersonation", "attachment_lure"],
+      "subjects": ["Delivery attempt failed - parcel {tracking_no}", "Your parcel is on hold"],
+      "bodies": [
+        "We attempted to deliver parcel {tracking_no} but no one was available.\n\nComplete the attached delivery form to arrange a new date.\n\n{brand} Customer Service",
+        "Parcel {tracking_no} is being held at our depot.\n\nOpen the attached form and return it to release your parcel.\n\n{brand}"
+      ]
+    },
+    {
+      "id": "imp-manager-availability", "category": "impersonation", "held_back": false,
+      "brand_kind": null, "sender": "spoofed_manager", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["impersonation"],
+      "subjects": ["Are you at your desk?", "Need your help with something"],
+      "bodies": [
+        "Hi {recipient_first},\n\nAre you available? I need help with a confidential task. Please reply with your mobile number.\n\n{sender_first}",
+        "Hello {recipient_first}, I'm travelling and can only use email. Reply when you see this.\n\nThanks,\n{sender_first} {sender_last}"
+      ]
+    },
+    {
+      "id": "imp-telecom-survey", "category": "impersonation", "held_back": true,
+      "brand_kind": "telecom", "sender": "lure", "reply_to": "freemail", "link_path": null,
+      "attachment": null, "tactics": ["impersonation"],
+      "subjects": ["Customer loyalty reward from {brand}", "Confirm your details for a bill credit"],
+      "bodies": [
+        "Dear customer,\n\nAs a valued {brand} customer you qualify for a bill credit of {amount}. Reply with your full name, date of birth and home address to receive it.\n\n{brand} Rewards",
+        "Hello,\n\nWe are updating our records. Please reply with your account holder name, phone number and date of birth.\n\n{brand} Customer Team"
+      ]
+    },
+    {
+      "id": "urg-final-warning-file", "category": "urgency", "held_back": false,
+      "brand_kind": null, "sender": "unknown", "reply_to": "none", "link_path": null,
+      "attachment": {"filename": "notice_{ref_no}.html", "subtype": "html"},
+      "tactics": ["urgency", "attachment_lure"],
+      "subjects": ["FINAL WARNING - read immediately", "Last notice before action is taken (ref {ref_no})"],
+      "bodies": [
+        "This is your final warning.\n\nOpen the attached notice {deadline}. Failure to respond will result in further action.\n\nRef: {ref_no}",
+        "URGENT\n\nA notice has been issued in your name. You must read the attached document {deadline}.\n\nNo further reminders will be sent."
+      ]
+    },
+    {
+      "id": "urg-reply-or-close", "category": "urgency", "held_back": false,
+      "brand_kind": null, "sender": "unknown", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["urgency"],
+      "subjects": ["Account closure scheduled", "Respond {deadline} to keep your account"],
+      "bodies": [
+        "Your account is scheduled for closure.\n\nReply to this message {deadline} with the word KEEP to stop the closure.\n\nRef: {ref_no}",
+        "We have not heard from you. Unless you reply {deadline}, your account and all data will be permanently removed."
+      ]
+    },
+    {
+      "id": "urg-files-deleted", "category": "urgency", "held_back": true,
+      "brand_kind": null, "sender": "unknown", "reply_to": "none", "link_path": "files/keep",
+      "attachment": null, "tactics": ["urgency", "link_lure"],
+      "subjects": ["Your files will be deleted", "{file_count} files scheduled for removal"],
+      "bodies": [
+        "{file_count} of your files are scheduled for permanent deletion {deadline}.\n\nKeep your files: {link}",
+        "Storage cleanup notice: files not confirmed {deadline} will be removed.\n\nConfirm here: {link}"
+      ]
+    },
+    {
+      "id": "ben-team-update", "category": "benign", "held_back": false,
+      "brand_kind": null, "sender": "colleague", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": [],
+      "subjects": ["Team update - week {week_no}", "Notes from this week"],
+      "bodies": [
+        "Hi all,\n\nA quick update for week {week_no}: the {project} review went well and the next milestone is on track. Thanks for the hard work.\n\n{sender_first}",
+        "Hello team,\n\nThis week we finished testing for {project}. Next week we start the documentation. Let me know if you have questions.\n\nBest,\n{sender_first} {sender_last}"
+      ]
+    },
+    {
+      "id": "ben-meeting-notes", "category": "benign", "held_back": false,
+      "brand_kind": null, "sender": "colleague", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": [],
+      "subjects": ["Notes: {project} meeting", "Summary of today's {project} call"],
+      "bodies": [
+        "Hi {recipient_first},\n\nThanks for joining today. Main points:\n- Scope agreed for phase two\n- {sender_first} to draft the timeline\n- Next meeting on {weekday}\n\nCheers,\n{sender_first}",
+        "Hello,\n\nSummary of the {project} call: we agreed the budget and will meet again on {weekday}. Shout if I missed anything.\n\n{sender_first} {sender_last}"
+      ]
+    },
+    {
+      "id": "ben-order-confirmation", "category": "benign", "held_back": true,
+      "brand_kind": "shop", "sender": "brand", "reply_to": "none", "link_path": "orders",
+      "attachment": null, "tactics": [],
+      "subjects": ["Order {order_no} confirmed", "Thanks for your order {order_no}"],
+      "bodies": [
+        "Hi {recipient_first},\n\nThanks for your order {order_no}. We'll email you when it ships.\n\nTrack your order in your account: {link}\n\n{brand}",
+        "Your order {order_no} has been received and is being prepared.\n\nView order details: {link}\n\n{brand} Customer Care"
+      ]
+    },
+    {
+      "id": "lu-password-expiry", "category": "legit_urgent", "held_back": false,
+      "brand_kind": null, "sender": "org_it", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["urgency"],
+      "subjects": ["Your password expires on {weekday}", "Reminder: password change due {weekday}"],
+      "bodies": [
+        "Hello {recipient_first},\n\nYour network password expires on {weekday}. Change it before then by pressing Ctrl+Alt+Del on your work laptop and choosing \"Change a password\".\n\nWe will never ask for your password by email.\n\n{it_desk}",
+        "Hi {recipient_first},\n\nThis is a reminder that your password must be changed by {weekday}. Use the usual self-service portal on the intranet. If you need help, call the service desk.\n\n{it_desk}"
+      ]
+    },
+    {
+      "id": "lu-invoice-due-today", "category": "legit_urgent", "held_back": false,
+      "brand_kind": "supplier", "sender": "brand", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["urgency"],
+      "subjects": ["Invoice {invoice_no} due today", "Payment reminder: invoice {invoice_no}"],
+      "bodies": [
+        "Hello,\n\nA friendly reminder that invoice {invoice_no} for {amount} is due today. Payment details are unchanged and are on the invoice we sent last month.\n\nThank you,\n{sender_first} {sender_last}\nAccounts, {brand}",
+        "Dear {org} Accounts,\n\nInvoice {invoice_no} ({amount}) falls due today under our usual terms. If you have already paid, please ignore this message.\n\nBest regards,\n{brand} Accounts"
+      ]
+    },
+    {
+      "id": "lu-timesheet-cutoff", "category": "legit_urgent", "held_back": true,
+      "brand_kind": null, "sender": "org_hr", "reply_to": "none", "link_path": null,
+      "attachment": null, "tactics": ["urgency"],
+      "subjects": ["Timesheets due by {time} today", "Payroll cut-off today at {time}"],
+      "bodies": [
+        "Hi all,\n\nPayroll cut-off is today at {time}. Please submit your timesheet in the usual HR system so you are paid on time.\n\n{hr_team}",
+        "Reminder: timesheets must be submitted by {time} today. Late timesheets will be paid next month.\n\n{hr_team}"
+      ]
+    }
+  ]
+}

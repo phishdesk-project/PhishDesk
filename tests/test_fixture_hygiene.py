@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pytest
 
+from phishdesk_analysis.safety import is_reserved_domain, unreserved_domains
+
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = Path(__file__).parent / "fixtures"
 FIXTURE_FILES = [
@@ -18,11 +20,6 @@ FIXTURE_FILES = [
     for p in FIXTURES.rglob("*")
     if p.is_file() and p.suffix in {".jsonl", ".json", ".eml", ".txt", ".md"}
 ]
-
-RESERVED = re.compile(r"(^|\.)(example\.(com|org|net)|[a-z0-9-]+\.test|[a-z0-9-]+\.example)$")
-EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+)")
-URL = re.compile(r"https?://([A-Za-z0-9.-]+)")
-SENDER_DOMAIN = re.compile(r"(?:sender|list):([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 SECRETS = {
     "AWS key": re.compile(r"AKIA[0-9A-Z]{16}"),
     "private key": re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----"),
@@ -34,28 +31,15 @@ SECRETS = {
 }
 
 
-def domains_in(text):
-    for pattern in (EMAIL, URL, SENDER_DOMAIN):
-        for match in pattern.finditer(text):
-            yield match.group(1).lower().rstrip(".")
-
-
-def is_reserved(domain):
-    return bool(RESERVED.search(domain))
-
-
 def test_reserved_domain_check_works():
-    assert (
-        is_reserved("example.com")
-        and is_reserved("mail-admin.test")
-        and is_reserved("acme.example")
-    )
-    assert not is_reserved("gmail.com") and not is_reserved("monkey.org")
+    assert is_reserved_domain("example.com") and is_reserved_domain("mail-admin.test")
+    assert is_reserved_domain("acme.example")
+    assert not is_reserved_domain("gmail.com") and not is_reserved_domain("monkey.org")
 
 
 @pytest.mark.parametrize("path", FIXTURE_FILES, ids=lambda p: str(p.relative_to(FIXTURES)))
 def test_fixtures_use_only_reserved_domains(path):
-    bad = sorted({d for d in domains_in(path.read_text(encoding="utf-8")) if not is_reserved(d)})
+    bad = unreserved_domains(path.read_text(encoding="utf-8"))
     assert not bad, f"real-looking domains in {path.name}: {bad}"
 
 
