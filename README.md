@@ -19,6 +19,10 @@ structure and offline domain-age checks without changing Evidence v1. Run
 exchanges. See [check boundaries, confidence and unknown states](docs/checks.md).
 There are no network lookups or AI calls; unavailable observations remain unknown.
 
+C04 records [mailbox and sandbox feasibility](docs/c04-feasibility.md): connected
+tests are NO-GO pending verified dedicated lab accounts and a disposable isolated
+VM. The synthetic page is prepared; no VM screenshot or containment pass is claimed.
+
 Darshan (@k-Darshan-chowdary) leads cybersecurity/backend. Rishitha (@RishithaDama)
 leads AI/ML and the React dashboard. Ownership is equal; reviews, contracts,
 documentation, releases and community work are shared.
