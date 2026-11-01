@@ -19,9 +19,11 @@ structure and offline domain-age checks without changing Evidence v1. Run
 exchanges. See [check boundaries, confidence and unknown states](docs/checks.md).
 There are no network lookups or AI calls; unavailable observations remain unknown.
 
-C04 records [mailbox and sandbox feasibility](docs/c04-feasibility.md): connected
-tests are NO-GO pending verified dedicated lab accounts and a disposable isolated
-VM. The synthetic page is prepared; no VM screenshot or containment pass is claimed.
+C04 records [mailbox and sandbox feasibility](docs/c04-feasibility.md): Gmail
+read-only synthetic retrieval and an offline disposable-VM Firefox screenshot
+spike passed within documented limits. Owned-file policy denials are user-verified.
+Production containment and independent boundary traffic remain unproven; no unknown
+live URLs are allowed. M365/Graph remains deferred at the Month 2 tenant gate.
 
 Darshan (@k-Darshan-chowdary) leads cybersecurity/backend. Rishitha (@RishithaDama)
 leads AI/ML and the React dashboard. Ownership is equal; reviews, contracts,

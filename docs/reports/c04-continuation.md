@@ -1,6 +1,8 @@
-# PhishDesk C04 continuation - November 1, 2026
+# Historical automated C04 continuation - November 1, 2026
 
-C04 remains open. Gmail read-only synthetic feasibility passed in the prior authorized run. A NEW disposable diskless VMware VM was prepared and booted, but the synthetic HTML rendering, navigation and network-containment acceptance tests remain blocked. PR #102 must remain unmerged; C05 was not started.
+> Historical record of the earlier automated attempt. Later manual tests supersede its current-status conclusions; see [final assessment](c04-final-assessment.md) and [test record](c04-final-tests.json). Failures below remain failures of this earlier attempt. Old no-merge instructions are historical and superseded by the user's explicit independent-review authorization.
+
+At the end of this earlier attempt, C04 remained open. Gmail read-only synthetic feasibility passed in the prior authorized run. A NEW disposable diskless VMware VM was prepared and booted, but the synthetic HTML rendering, navigation and network-containment acceptance tests remain blocked. PR #102 must remain unmerged; C05 was not started.
 
 ## Verified Gmail evidence
 

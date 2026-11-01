@@ -1,0 +1,41 @@
+{
+  "screenshots_verified": 9,
+  "excluded_uploads": 3,
+  "test_records": 8,
+  "relative_links": "pass",
+  "sensitive_patterns": "pass (values never emitted)",
+  "fixture_sha256": "2f60343647ac98d09f8982b9db459a941d5937fdc8786ed5a07f99315239a831",
+  "fixture_static_check": "pass",
+  "scope": "Documentation, sanitized evidence and inert fixture only",
+  "date": "2026-11-01",
+  "python": "3.13.1 (existing development environment)",
+  "commands": [
+    {
+      "command": "python -m ruff check src tests scripts",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m ruff format --check src tests scripts",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m mypy",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/export_contracts.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python scripts/check_roadmap.py",
+      "exit_code": 0
+    }
+  ],
+  "pytest": "193 passed, 1 existing Starlette/httpx deprecation warning in 18.25s",
+  "gitleaks_working_tree": "8.30.1 dir --redact --no-banner: no leaks found",
+  "limitations": "Local checks cover the documentation/evidence candidate on the PR branch; no mailbox or VM test rerun. Exact-head remote CI/security results are linked in the PR review and final Desktop report. CodeQL skip is not a pass."
+}
