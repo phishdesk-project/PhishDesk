@@ -1,5 +1,7 @@
 # C04 research verification - 2026-11-01
 
+> Historical initial research verification. For current Gmail PASS, the new VM boot attempts and remaining runtime blockers, see [the continuation report](c04-continuation.md). The 193-test result below belongs to the original research revision.
+
 Issue: [C04 #2](https://github.com/phishdesk-project/PhishDesk/issues/2).
 Decision and conditional protocols: [c04-feasibility.md](../c04-feasibility.md).
 Peer reviewer: RishithaDama. Mandatory runtime evidence is blocked; issue stays open.
