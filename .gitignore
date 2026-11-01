@@ -227,6 +227,8 @@ labels_*.csv
 *.part
 data/raw/synthetic/*.eml
 data/processed/
+data/labels/work/
+.venv/
 
 # PhishDesk local data and frontend builds
 .venv-*/
