@@ -6,6 +6,7 @@ apply exactly the same rule.
 
 from __future__ import annotations
 
+import ipaddress
 import re
 from collections.abc import Iterator
 
@@ -53,7 +54,16 @@ _BRAND_PATTERNS = [re.compile(rf"\b{re.escape(b)}\b", re.IGNORECASE) for b in RE
 
 
 def is_reserved_domain(domain: str) -> bool:
-    return bool(_RESERVED.search(domain.lower().rstrip(".")))
+    """True for reserved test domains and for IP addresses that are not public.
+
+    Non-public IPs include the documentation ranges (192.0.2.0/24, 198.51.100.0/24,
+    203.0.113.0/24), private, loopback and link-local addresses.
+    """
+    host = domain.lower().rstrip(".")
+    try:
+        return not ipaddress.ip_address(host).is_global
+    except ValueError:
+        return bool(_RESERVED.search(host))
 
 
 def find_domains(text: str) -> Iterator[str]:

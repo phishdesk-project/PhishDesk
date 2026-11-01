@@ -35,6 +35,9 @@ def test_reserved_domain_check_works():
     assert is_reserved_domain("example.com") and is_reserved_domain("mail-admin.test")
     assert is_reserved_domain("acme.example")
     assert not is_reserved_domain("gmail.com") and not is_reserved_domain("monkey.org")
+    assert is_reserved_domain("192.0.2.1") and is_reserved_domain("203.0.113.9")
+    assert is_reserved_domain("10.0.0.5") and is_reserved_domain("127.0.0.1")
+    assert not is_reserved_domain("8.8.8.8")
 
 
 @pytest.mark.parametrize("path", FIXTURE_FILES, ids=lambda p: str(p.relative_to(FIXTURES)))
