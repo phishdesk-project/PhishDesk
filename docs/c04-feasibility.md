@@ -7,8 +7,10 @@ Tracks [Issue #2](https://github.com/phishdesk-project/PhishDesk/issues/2).
 ## Decision and acceptance
 
 **NO-GO for connected mailbox tests and browser execution in the available
-environment.** No owned dedicated mailbox or Microsoft 365 lab tenant has been
-verified. Existing VM configurations do not establish disposable, credential-free
+environment.** The owner confirmed on 2026-11-01 that no dedicated Gmail/IMAP
+test mailbox, Microsoft 365 test tenant or approved disposable lab VM is available.
+Record these as **BLOCKED: resource unavailable**, rather than awaiting inventory
+confirmation. Existing VM configurations do not establish disposable, credential-free
 isolation. Do not start those guests or use the signed-in host browser for the
 synthetic sandbox spike. No containment or successful mailbox-access claim is made.
 
@@ -24,7 +26,7 @@ tenant go/no-go; Graph remains experimental/deferred if unavailable.
 
 | Exact Issue #2 acceptance criterion | Evidence and disposition |
 | --- | --- |
-| Record IMAP/Gmail test-account access and request a Microsoft 365 test tenant | Access inventory below: unverified, no authentication attempted. Owner provisioning request recorded below and in the issue evidence comment; no vendor request or tenant provisioning completed. Partial/open. |
+| Record IMAP/Gmail test-account access and request a Microsoft 365 test tenant | Owner confirms no dedicated accounts/tenant available; access tests BLOCKED. Owner provisioning request recorded below and in the issue evidence comment; no vendor request or tenant provisioning completed. Partial/open. |
 | Screenshot an owned synthetic page using a disposable isolated VM with private networks and credentials blocked | BLOCKED. No adequately verified VM. Inert owned fixture prepared; no browser launch, screenshot, network probe or containment test performed. |
 | Record sandbox go/no-go and disable uncontrolled navigation; no live remediation | NO-GO recorded. Product has no navigation implementation; none enabled or added. No runtime containment control is claimed. No remediation performed. Peer acceptance pending. |
 
@@ -37,10 +39,10 @@ An existing login or Git author address does not establish a dedicated lab accou
 
 | Resource | Verified availability/access | Obstacle and next evidence |
 | --- | --- | --- |
-| Dedicated Gmail test mailbox | None verified; login, API and IMAP not attempted | Owner must attest sole lab use and synthetic-only contents; identify a non-sensitive alias, approve exact proposed access separately. |
-| Other dedicated IMAP mailbox | None verified; endpoint/provider unknown | Owner must identify owned lab server, TLS/auth method and permitted folder. No guessed endpoints or authentication attempts. |
-| Microsoft 365 lab tenant / Exchange Online mailbox | None verified; admin role, licensing and app registration unknown | Provisioning request to project owner below. No university/employer/production tenant substitution. |
-| Disposable isolated VM | None verified | Existing configuration is insufficient; findings below. No guest started or modified. |
+| Dedicated Gmail test mailbox | BLOCKED: owner confirms none available; login, API and IMAP not attempted | A dedicated account must become available, with sole lab use and synthetic-only contents attested; exact access needs separate approval. |
+| Other dedicated IMAP mailbox | BLOCKED: owner confirms none available | An owned lab server, TLS/auth method and permitted folder must be identified. No guessed endpoints or authentication attempts. |
+| Microsoft 365 lab tenant / Exchange Online mailbox | BLOCKED: owner confirms none available | Provisioning request to project owner below remains outstanding. No university/employer/production tenant substitution. |
+| Disposable isolated VM | BLOCKED: owner confirms no approved lab VM available | Existing configuration is insufficient; findings below. No guest started or modified. |
 
 ### Provider feasibility and permission boundary
 
@@ -68,7 +70,8 @@ administrator able to confirm licensing, app-registration policy and approved
 delegated scope. Record only availability, owner attestation, lab alias, consent
 decision and blockers; keep tenant/account identifiers and credentials out of Git.
 No purchase, signup, vendor form, identity verification or consent is authorized
-by this request. Owner action remains pending.
+by this request. The owner confirmed no tenant is available; provisioning remains
+blocked pending a separately authorized resource decision.
 
 Microsoft's developer sandbox is conditional on eligibility; a production or
 education subscription does not prove developer-sandbox entitlement. If ineligible,
@@ -167,10 +170,12 @@ implementation/security gates. No unknown live URL is permitted by a C04 pass.
 
 ## Remaining gates and unrelated tracked gaps
 
-1. Owner verifies dedicated test mailbox and separately approves exact access.
+1. A dedicated test mailbox becomes available; owner verifies it and separately
+   approves exact access. Current status: blocked, owner confirms none available.
 2. Owner answers the Microsoft 365 lab provisioning request; no external
    submission/provisioning is claimed.
-3. Owner provides a verified disposable clone; complete the local screenshot and
+3. An approved disposable lab VM becomes available; owner provides a verified
+   disposable clone. Complete the local screenshot and
    failure-case evidence under the protocol above, or keep the acceptance blocked.
 4. Rishitha reviews this research PR; applicable CI must pass. Leave Issue #2
    open and dependent work gated while mandatory evidence is absent.

@@ -75,8 +75,17 @@ inspection do not demonstrate containment.
 
 ## Acceptance limits
 
+Owner confirmation after the initial research PR, 2026-11-01: no dedicated
+Gmail/IMAP test mailbox, Microsoft 365 test tenant or approved disposable lab VM
+is available. All dependent access/screenshot tests are **BLOCKED: resource
+unavailable**. This resolves the inventory question; it does not supply test
+evidence, approve provisioning, or authorize use of other existing VMs/accounts.
+This documentation-only amendment was checked with `git diff --check`; the
+193-test result above belongs to the initial research revision. No runtime test
+was repeated for this inventory clarification.
+
 Connected mailbox positive/negative tests: **NOT RUN**. Tenant access:
-**UNVERIFIED**. Local guest screenshot, navigation rejection, private-network
+**BLOCKED / UNAVAILABLE (owner-confirmed)**. Local guest screenshot, navigation rejection, private-network
 blocking, credentials isolation, crash/timeout and destruction tests: **NOT RUN**.
 Containment: **NOT ACHIEVED / NOT CLAIMED**. Preserve unknown/blocked states.
 
