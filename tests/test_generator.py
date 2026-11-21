@@ -189,3 +189,14 @@ def test_family_with_unknown_slot_is_rejected(tmp_path):
     config = load_config(tmp_path)
     with pytest.raises(GeneratorError, match="unknown slots"):
         generate_email(config, config.families[0], 0)
+
+
+def test_written_emails_are_distinct_after_normalising(tmp_path):
+    from phishdesk_analysis.corpus import normalise, parse_email, plain_text
+
+    plan = plan_by_category(CONFIG, {Category.URGENCY: 60, Category.LEGIT_URGENT: 60})
+    assert write_dataset(CONFIG, plan, tmp_path / "eml", tmp_path / "r.jsonl") == 120
+    texts = [
+        normalise(plain_text(parse_email(p.read_bytes()))) for p in (tmp_path / "eml").glob("*.eml")
+    ]
+    assert len(texts) == len(set(texts)) == 120

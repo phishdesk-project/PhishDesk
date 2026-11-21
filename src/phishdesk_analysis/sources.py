@@ -155,7 +155,7 @@ def write_recorded_hashes(register_path: Path, source_id: str, hashes: dict[str,
         for f in source["files"]:
             if f.get("sha256") is None and f["name"] in hashes:
                 f["sha256"] = hashes[f["name"]]
-    register_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        register_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8", newline="\n")
 
 
 IndexRow = tuple[str, str, str]  # (id, relative file path, sha256)
