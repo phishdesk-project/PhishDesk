@@ -376,3 +376,27 @@ def test_select_enron_samples_inbox_only_and_is_deterministic(tmp_path):
 
 def test_real_register_is_loadable():
     assert load_register(ROOT / "data" / "sources.json").get("nazario")
+
+
+def test_review_sample_is_seeded_and_proportional(env):
+    from phishdesk_analysis.corpus import review_sample
+
+    export_all(env)
+    first = review_sample(env["labels"], 0.5, seed=7)
+    assert first == review_sample(env["labels"], 0.5, seed=7)
+    assert len(first["nazario"]) == 3
+    assert set(first["nazario"]) <= {f"nazario-2099-{i:04d}" for i in range(6)}
+
+
+def test_disagreements_lists_differing_rows():
+    from phishdesk_analysis.corpus import disagreements
+
+    a = {
+        "1": {"category": "credential", "tactics": "urgency,impersonation"},
+        "2": {"category": "payment", "tactics": ""},
+    }
+    b = {
+        "1": {"category": "credential", "tactics": "impersonation, urgency"},
+        "2": {"category": "credential", "tactics": ""},
+    }
+    assert disagreements(a, b) == [("2", "payment []", "credential []")]

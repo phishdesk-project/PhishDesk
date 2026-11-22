@@ -523,6 +523,37 @@ def label_agreement(a: dict[str, dict[str, str]], b: dict[str, dict[str, str]]) 
     }
 
 
+def review_sample(labels_dir: Path, fraction: float, seed: int) -> dict[str, list[str]]:
+    """Seeded random sample of committed real labels, per source, for double-labelling.
+
+    Uses the committed labels files, so anyone with the same branch gets the same ids.
+    """
+    sample: dict[str, list[str]] = {}
+    for path in sorted(labels_dir.glob("*.csv")):
+        ids = sorted(r.id for r in load_labels(path))
+        if not ids:
+            continue
+        count = max(1, round(len(ids) * fraction))
+        sample[path.stem] = sorted(random.Random(f"{seed}:{path.stem}").sample(ids, count))
+    return sample
+
+
+def disagreements(
+    a: dict[str, dict[str, str]], b: dict[str, dict[str, str]]
+) -> list[tuple[str, str, str]]:
+    """(id, label in a, label in b) for shared ids whose category or tactics differ."""
+
+    def show(row: dict[str, str]) -> str:
+        tactics = ",".join(sorted(_split_tactics(row.get("tactics", ""))))
+        return f"{row['category']} [{tactics}]"
+
+    out = []
+    for i in sorted(set(a) & set(b)):
+        if show(a[i]) != show(b[i]):
+            out.append((i, show(a[i]), show(b[i])))
+    return out
+
+
 # --- Enron candidate selection -------------------------------------------
 
 URGENT_WORDS = (

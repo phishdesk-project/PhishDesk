@@ -4,6 +4,7 @@ Usage (from the repo root, venv active):
   python scripts/label_cli.py nazario --by person2
   python scripts/label_cli.py nazario --by person2 --search invoice
   python scripts/label_cli.py nazario --by person2 --review      # revisit labelled rows
+  python scripts/label_cli.py nazario --by person2 --review --ids nazario-2025-0042,...
 
 Works on data/labels/work/<sheet>.csv (create it with make_label_sheet.py first).
 Keys: 1-6 category, s skip, b back, m more text, q quit.
@@ -28,6 +29,7 @@ from phishdesk_analysis.labelling import (
     full_body,
     missing_key_tactics,
     parse_tactics,
+    sheet_source,
 )
 from phishdesk_analysis.records import Category
 
@@ -90,6 +92,7 @@ def main() -> int:
     parser.add_argument("sheet", help="work sheet name, e.g. nazario or enron-urgent")
     parser.add_argument("--by", required=True, help="your labeller name, e.g. person2")
     parser.add_argument("--search", help="only emails whose subject contains this text")
+    parser.add_argument("--ids", help="only these ids, comma-separated")
     parser.add_argument("--review", action="store_true", help="include already labelled rows")
     parser.add_argument(
         "--keep-duplicates", action="store_true", help="show emails identical to earlier ones"
@@ -103,10 +106,11 @@ def main() -> int:
         print(f"ERROR: {path} not found. Run make_label_sheet.py first.")
         return 1
     sheet = WorkSheet(path)
-    source = args.sheet.split("-")[0]
+    source = sheet_source(args.sheet)
     emails_dir = RAW_PUBLIC / source / "emails"
     targets = TARGETS.get(args.sheet, {})
-    queue = sheet.queue(args.search, args.review)
+    ids = {i.strip() for i in args.ids.split(",") if i.strip()} if args.ids else None
+    queue = sheet.queue(args.search, args.review, ids)
     if not queue:
         print("Nothing to label with these settings.")
         return 0
@@ -181,7 +185,13 @@ def main() -> int:
     if auto_skipped:
         print(f"\nSkipped {auto_skipped} duplicate(s) of emails you already labelled.")
     print(f"\nSaved to {path}\n{progress(sheet, targets)}")
-    print(f"Next: python scripts/export_labels.py {source}")
+    if args.sheet.startswith("review-"):
+        print(
+            f"Next: python scripts/label_agreement.py data/labels/{source}.csv "
+            f"data/labels/work/{args.sheet}.csv --show"
+        )
+    else:
+        print(f"Next: python scripts/export_labels.py {source}")
     return 0
 
 

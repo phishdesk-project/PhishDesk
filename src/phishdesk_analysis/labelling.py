@@ -96,11 +96,18 @@ class WorkSheet:
     def skipped(self) -> int:
         return sum(1 for r in self.rows if is_skipped(r))
 
-    def queue(self, search: str | None = None, include_done: bool = False) -> list[int]:
-        """Row positions to show: unlabelled rows, optionally matching a subject search."""
+    def queue(
+        self,
+        search: str | None = None,
+        include_done: bool = False,
+        ids: set[str] | None = None,
+    ) -> list[int]:
+        """Row positions to show: unlabelled rows, optionally filtered by subject or id."""
         needle = search.lower() if search else None
         out = []
         for i, row in enumerate(self.rows):
+            if ids is not None and row["id"] not in ids:
+                continue
             if not include_done and is_done(row):
                 continue
             if needle and needle not in (row.get("subject") or "").lower():
@@ -115,6 +122,14 @@ def is_skipped(row: dict[str, str]) -> bool:
 
 def is_done(row: dict[str, str]) -> bool:
     return bool(row.get("category")) or is_skipped(row)
+
+
+def sheet_source(sheet_name: str) -> str:
+    """'nazario' -> nazario, 'enron-urgent' -> enron, 'review-person1-enron' -> enron."""
+    parts = sheet_name.split("-")
+    if parts[0] == "review" and len(parts) >= 3:
+        return parts[2]
+    return parts[0]
 
 
 # --- applying labels -------------------------------------------------------

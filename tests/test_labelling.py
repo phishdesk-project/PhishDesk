@@ -137,3 +137,16 @@ def test_content_key_ignores_formatting_but_not_content():
     same = content_key(eml("Lunch", "See you at noon."))
     assert same == content_key(eml("lunch", "See   you at noon!", sender="b@corp.test"))
     assert same != content_key(eml("Lunch", "See you at one."))
+
+
+def test_sheet_source_handles_review_sheets():
+    from phishdesk_analysis.labelling import sheet_source
+
+    assert sheet_source("nazario") == "nazario"
+    assert sheet_source("enron-urgent") == "enron"
+    assert sheet_source("review-person1-enron") == "enron"
+
+
+def test_queue_filters_by_ids(tmp_path):
+    sheet = WorkSheet(make_sheet(tmp_path, ["a", "b", "c"]))
+    assert sheet.queue(ids={"nazario-2099-0002", "nazario-2099-0000"}) == [0, 2]

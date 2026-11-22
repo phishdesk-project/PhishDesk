@@ -150,8 +150,9 @@ def composition_report(
         real_n = sum(real_by_cat_split[(c, s)] for s in SPLITS)
         if real_n < MIN_REAL_PER_CATEGORY:
             warnings.append(
-                f"{c.value}: only {real_n} real emails; its scores will rely mainly on "
-                "synthetic data"
+                f"{c.value}: only {real_n} real emails; dev and test hold very few of them, "
+                "so scores for this category are not reliable (its training data is "
+                "mainly synthetic)"
             )
         for s in ("dev", "test"):
             if by_cat_split[(c, s)] == 0:
