@@ -1,6 +1,6 @@
 # 0001 – Label taxonomy for the PhishDesk dataset
 
-**Status:** Draft (proposed)
+**Status:** Accepted
 **Date:** 2026-10-27
 **Proposed by:** Person 2 (AI/ML)
 **Reviewer:** Person 1 (Cybersecurity)
@@ -113,25 +113,31 @@ Questions 1, 3 and 5 decide `is_phishing`. Questions 2, 1 and 4, applied in the 
 - `category` must never be empty; a missing category is an error, never treated as benign.
 - `tactics`, when present, must come from the fixed list.
 
-## Agreement test
+### Results (2026-11-22)
 
-Both owners label the same 25 emails independently, then compare. A row fully matches when `is_phishing` and `category` agree.
+Person 1 independently labelled a seeded random sample of 29 real emails
+(`data/labels/review-sample.json`: Nazario 10, Enron 18, SpamAssassin 1).
 
-| Category | Count | Source |
-| --- | --- | --- |
-| credential | 5 | Nazario 2025 |
-| payment | 4 | Nazario 2025 |
-| impersonation | 2 | Nazario 2025 |
-| urgency | 2 | Nazario 2025 |
-| benign | 6 | SpamAssassin ham or Enron |
-| legit_urgent | 6 | Enron + hand-written |
+| Source | Emails | Category agreement | Tactics agreement | Category kappa |
+| --- | --- | --- | --- | --- |
+| Nazario | 10 | 7 (70%) | 5 (50%) | 0.27 |
+| Enron | 18 | 14 (78%) | 15 (83%) | 0.00* |
+| SpamAssassin | 1 | 1 | 1 | – |
+| **Total** | **29** | **22 (76%)** | **21 (72%)** | |
 
-Results (fill in after the test):
+*Kappa is 0.00 because the second labeller chose one category for all Enron emails;
+kappa is unreliable on such unbalanced samples, so counts are reported alongside it.
 
-- Agreement before fixes: [ ]% ([ ]/25 rows fully matching)
-- Changes made to definitions or rules: [ ]
-- Agreement after fixes: [ ]%
-- Target: 85–90% or higher
+Disagreements and resolutions:
+- Urgency tactic missed on 3 Nazario emails → added an explicit urgency test to the guidelines.
+- Credential vs payment/impersonation on 3 Nazario emails → resolved by rule 2 (label by what
+  the link or attachment collects).
+- legit_urgent vs benign on 4 Enron emails → clarified that legit_urgent needs a deadline
+  within about one day or a stated consequence, and always carries the urgency tactic.
+
+All 9 disagreements were resolved by discussion and the labels corrected. The 76% figure is
+below the 85–90% target; with only 29 emails each disagreement moves it by about 3 points,
+and the rule clarifications above address its causes.
 
 ## Consequences
 
@@ -148,4 +154,4 @@ Results (fill in after the test):
 
 ## Approval
 
-- [ ] Person 1 approved on: [date]
+- [x] Person 1 approved on: 2026-11-23

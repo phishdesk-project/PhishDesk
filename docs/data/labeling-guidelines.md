@@ -57,6 +57,10 @@ Decide by what the email collects, not by its subject.
 - Mentions of passwords or links to other domains do not make legitimate mail
   phishing. Internal notices about a partner system, newsletters and forwarded mail
   often link elsewhere; judge by what the email asks the reader to do.
+- **Urgency tactic test:** tag `urgency` when the email sets a deadline, threatens a loss
+  or suspension, or uses words such as "immediately", "today" or "final".
+- **legit_urgent always carries the `urgency` tactic.** A reminder or a deadline more than
+  about a day away is benign.
 
 ## Skip (leave unlabelled)
 
