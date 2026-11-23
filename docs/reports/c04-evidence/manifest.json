@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01",
+  "conversation": "phishdesk (6add1be7-32a8-83ea-9a8b-8673e70a58ce)",
+  "provenance_note": "Recovered original upload files from prior chat preview cache and C04 Desktop evidence; duplicate byte-identical cached copies deduplicated. Source filenames are labels, not verified capture timestamps.",
+  "published": [
+    {
+      "file": "fixture-mount.png",
+      "source_name": "image(20261101-202009).png",
+      "origin": "chat upload",
+      "sha256": "00e0b0c5443a66943bc4985a6621a137aa05468912cbcc890ecce099e9068036",
+      "bytes": 95870,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Read-only iso9660 fixture disc and no HGFS mounts; not a network test."
+    },
+    {
+      "file": "manual-render.png",
+      "source_name": "image(20261101-202459).png",
+      "origin": "chat upload",
+      "sha256": "737d5f66ee5068954db232c65d72e4e681b22157b0dc21f1375d42a836c7956b",
+      "bytes": 67304,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Firefox owned file rendering with synthetic marker; not proof of containment or fixture byte identity."
+    },
+    {
+      "file": "route-lookups.png",
+      "source_name": "image(20261101-203214).png",
+      "origin": "chat upload",
+      "sha256": "5c0bf5ed085c5fb8b467f642d50731073abd6e66664fec6b3ea2fc396c88ac50",
+      "bytes": 64146,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Three IPv4 and one IPv6 route lookups unreachable; read-only fixture mount. Route lookups do not send probes."
+    },
+    {
+      "file": "headless-timeout.png",
+      "source_name": "image(20261101-220011).png",
+      "origin": "chat upload",
+      "sha256": "2bf98171023f16a9337e83cf095dd539df443e22a1af27035109bf4869232bdf",
+      "bytes": 107880,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "file reports PNG 1280x720; 10-second screenshot exit 0; timeout of sleep 15 exits 124."
+    },
+    {
+      "file": "file-quota.png",
+      "source_name": "image(20261101-220642).png",
+      "origin": "chat upload",
+      "sha256": "8081a159a0d2fbfb38c398d29076434670dc1e7f97b99a4ab5567a05de3be05c",
+      "bytes": 50814,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Synthetic dd quota attempt exits 153, 16384 bytes, then removal command. Firefox quota was not tested."
+    },
+    {
+      "file": "historical-boot.png",
+      "source_name": "sandbox-boot-only.png",
+      "origin": "prior Desktop evidence",
+      "sha256": "69003fbe30c67c5aea76ffd8410177fdce2cc6108b535d30581235824b61612e",
+      "bytes": 120591,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Earlier Ubuntu boot framebuffer only, 1280x800; not the synthetic page."
+    },
+    {
+      "file": "historical-console-blocker.png",
+      "source_name": "C04-console-blocker.png",
+      "origin": "prior Desktop evidence",
+      "sha256": "44557d2d7bbad1cb4f36781c9b875e653978e5c47c3709b41bb8382f4b097147",
+      "bytes": 322640,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Earlier failed console automation record; does not verify policy installation."
+    },
+    {
+      "file": "historical-pr.jpg",
+      "source_name": "PhishDesk-C04-PR.jpg",
+      "origin": "prior Desktop evidence",
+      "sha256": "40f8c3259b2d7e471e27915b1c4cd001edb6187824e2a386441ca96b74463389",
+      "bytes": 125914,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Outdated original PR state; retained only as history."
+    },
+    {
+      "file": "historical-blockers.jpg",
+      "source_name": "PhishDesk-C04-blockers.jpg",
+      "origin": "prior Desktop evidence",
+      "sha256": "e5ea3e1f0c9f031394cdfb5f13230098585d442b6cd6ac456b6dc6e894b820cf",
+      "bytes": 94790,
+      "processing": "Unmodified copy; visually privacy-reviewed",
+      "supports": "Outdated unavailable-resource issue state; retained only as history."
+    }
+  ],
+  "excluded": [
+    {
+      "source_name": "image(20261101-181354).png",
+      "sha256": "4dd4bab7fa02e66c608d8f7cdc2c452a8854e39b42f5b4bfa6575dfb24fcf474",
+      "disposition": "Blank account-signup UI; no completed C04 test evidence."
+    },
+    {
+      "source_name": "image(20261101-181855).png",
+      "sha256": "6aba964754d7ced90f445947f834362d08ffb69ad84933ae377fb81c57d89ce3",
+      "disposition": "Account overview includes private account identifiers; excluded from published evidence."
+    },
+    {
+      "source_name": "image(20261101-182916).png",
+      "sha256": "a02f191803969229216290e349e14adb61f77914160116eb674d9f1eb042f2b3",
+      "disposition": "Synthetic-mail screenshot includes mailbox address; excluded from published evidence. Sanitized Gmail JSON used instead."
+    }
+  ],
+  "missing": [
+    "Original policy-active and five explicit WebsiteFilter denial screenshots were not recoverable in available chat history/cache or Desktop evidence.",
+    "Original headless c04-capture.png and c04-10sec.png guest files were not recovered; terminal file output is available.",
+    "No independent boundary packet capture or production containment evidence exists."
+  ],
+  "integrity_note": "Digests identify recovered bytes, not cryptographic proof of capture time or test execution. No screenshot generated, recreated, redrawn or altered."
+}

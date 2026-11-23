@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "https://www.googleapis.com/auth/gmail.readonly",
+  "subject": "[PHISHDESK TEST] Verification Email",
+  "messages_read": 1,
+  "inline_text_body_read": true,
+  "body_or_headers_saved": false,
+  "tokens_saved": false,
+  "mailbox_mutations": 0,
+  "mailbox_alias": "dedicated-synthetic-mailbox",
+  "evidence_date": "2026-11-01",
+  "evidence_provenance": "Prior completed local OAuth feasibility run; existing credential-free result reviewed in this continuation. No mailbox access rerun.",
+  "source_result_sha256": "d846b6400b215a4f96dc114449f22a58dc939ac70e3a10ca22773551841d0997"
+}

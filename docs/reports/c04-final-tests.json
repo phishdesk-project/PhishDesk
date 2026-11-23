@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-01",
+  "scope": "Month 1 C04 offline feasibility; evidence review only, no guest/mailbox rerun",
+  "tests": [
+    {
+      "id": "gmail",
+      "result": "PASS",
+      "evidence": "c04-gmail-sanitized.json",
+      "provenance": "Prior authorized test result reviewed; not rerun",
+      "observed": "Exactly gmail.readonly, one exact synthetic message/body retrieved, zero writes and no attachments.",
+      "limits": "Mailbox-wide scope; single-message bound is client-enforced. No IMAP, Graph or OAuth negative/revocation pass."
+    },
+    {
+      "id": "offline-guest",
+      "result": "PASS (bounded feasibility)",
+      "evidence": [
+        "c04-evidence/route-lookups.png",
+        "c04-evidence/fixture-mount.png",
+        "c04-evidence/historical-boot.png"
+      ],
+      "provenance": "Recovered screenshots plus user-verified manual preflight",
+      "observed": "Disposable diskless Ubuntu VMware guest; only loopback, no IPv4/IPv6 routes or HGFS; read-only fixture ISO. Route lookups to 192.0.2.1, 169.254.169.254, 192.168.1.1 and 2001:db8::1 return unreachable.",
+      "limits": "Only-loopback/full route inventory is user-verified; available screenshots show selected lookups and mount state. No independently measured boundary traffic. No new VM inspection or mutation in this task."
+    },
+    {
+      "id": "manual-render",
+      "result": "PASS",
+      "evidence": "c04-evidence/manual-render.png",
+      "provenance": "Original chat screenshot visually reviewed",
+      "observed": "Firefox displays file:///home/ubuntu/c04-owned.html and C04-SYNTHETIC-LOCAL-ONLY.",
+      "limits": "Does not prove byte identity, full containment or a production browser job."
+    },
+    {
+      "id": "websitefilter",
+      "result": "PASS (user-verified manual test)",
+      "evidence": null,
+      "provenance": "User explicitly verified in current request; original screenshots unavailable",
+      "observed": {
+        "active_policy": "WebsiteFilter",
+        "only_allowed_file": "file:///home/ubuntu/c04-owned.html",
+        "explicit_policy_blocks": [
+          "/etc/hosts",
+          "/etc/passwd",
+          "example.com",
+          "127.0.0.1",
+          "169.254.169.254"
+        ]
+      },
+      "limits": "Exact denied URL schemes/paths were not recoverable; listed targets reproduce the user's verified target list, not an exact command transcript. No independent rerun or policy file recovered. Redirect/popup/download/subresource bypass controls untested."
+    },
+    {
+      "id": "headless-png",
+      "result": "PASS",
+      "evidence": "c04-evidence/headless-timeout.png",
+      "provenance": "Original terminal screenshot visually reviewed",
+      "command": "timeout 30s firefox --headless --screenshot ~/c04-capture.png --window-size 1280,720 file:///home/ubuntu/c04-owned.html",
+      "observed": "file reports PNG image data, 1280 x 720, RGBA; ls reports about 39K.",
+      "limits": "Original guest PNG not recovered; terminal evidence is not a substitute for visually reviewing that PNG. Nonfatal GTK module message visible."
+    },
+    {
+      "id": "ten-second-job",
+      "result": "PASS",
+      "evidence": "c04-evidence/headless-timeout.png",
+      "provenance": "Original terminal screenshot visually reviewed",
+      "command": "timeout -k 2s 10s firefox --headless --screenshot ~/c04-10sec.png --window-size 1280,720 file:///home/ubuntu/c04-owned.html",
+      "observed": {
+        "exit_code": 0,
+        "file_type": "PNG",
+        "width": 1280,
+        "height": 720
+      },
+      "limits": "One successful bounded job; no benchmark or hung-browser termination guarantee."
+    },
+    {
+      "id": "timeout-wrapper",
+      "result": "PASS",
+      "evidence": "c04-evidence/headless-timeout.png",
+      "provenance": "Original terminal screenshot visually reviewed",
+      "command": "timeout -k 2s 1s sleep 15",
+      "observed": {
+        "exit_code": 124
+      },
+      "limits": "Tests timeout utility on sleep, not cleanup of a hung Firefox process tree."
+    },
+    {
+      "id": "file-size-quota",
+      "result": "PASS",
+      "evidence": "c04-evidence/file-quota.png",
+      "provenance": "Original terminal screenshot visually reviewed",
+      "command": "bash -c 'ulimit -c 0; ulimit -f 16; dd if=/dev/zero of=/tmp/c04-quota-test.bin bs=1024 count=64 status=none'",
+      "observed": {
+        "exit_code": 153,
+        "bytes": 16384,
+        "attempted_bytes": 65536,
+        "cleanup_command_visible": true
+      },
+      "limits": "Synthetic dd process only. Quota applied to Firefox itself, CPU/memory/process quotas, and partial browser output handling remain untested. Generic core-dumped diagnostic is visible despite ulimit -c 0; no core-file inspection claimed."
+    }
+  ],
+  "not_tested": [
+    "Independent boundary traffic measurement",
+    "Full production containment",
+    "Advanced redirect, popup, download and subresource enforcement",
+    "Hung Firefox/process-tree cleanup and browser crash/launch failure matrix",
+    "Firefox output quota enforcement; CPU, memory and process quotas",
+    "M365/Graph access",
+    "Other IMAP and OAuth negative/revocation tests"
+  ]
+}
