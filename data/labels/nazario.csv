@@ -4,8 +4,8 @@ nazario-2025-0002,82a5cc84ce89249011937560b9ecf0c676aa63541d240acc057d105e751fea
 nazario-2025-0003,0462cff77dd18ebcf7818bb730b05fcab0aaf0f9ac243019709e6ddba2cdf553,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-df391a74e0ce
 nazario-2025-0004,226a77f52946fa2ac743d330735a7cc7daab61a2bdae4c1f1dd156af10c6d217,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-e25fe004eb2a
 nazario-2025-0006,c6755cfca6a97eccb7eedbedbc531fad99c9552b5b1f329f4384639235a8e696,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-8aa84aed2519
-nazario-2025-0008,674243da65e092164be757978e35b80bc22055a24be099753fb34b10e58aec09,true,payment,impersonation,en,high,person2,sender-hash-4f123aeb1cfd
-nazario-2025-0009,9cef6ed356a6964f3865e8c521e39aa589ad5169e56457f7a46ab1ae77045117,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-4a90f879a1a6
+nazario-2025-0008,674243da65e092164be757978e35b80bc22055a24be099753fb34b10e58aec09,true,credential,"impersonation,link_lure",en,high,person1,sender-hash-4f123aeb1cfd
+nazario-2025-0009,9cef6ed356a6964f3865e8c521e39aa589ad5169e56457f7a46ab1ae77045117,true,credential,"urgency,impersonation,link_lure",en,high,person1,sender-hash-4a90f879a1a6
 nazario-2025-0010,1c6c3f4826f8421db60f99ac7faf177f4da2be2eda2441c714895d1b7a12f844,true,urgency,"urgency,impersonation,link_lure",en,high,person2,sender-hash-e8d556bf3f2c
 nazario-2025-0019,9726734c09df8312da1affc6bcdf647cc0a22ce4d333f0267037d7219f81e68b,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-7cc94cede5a4
 nazario-2025-0025,14d514ce34a4c0056aa2e4cbd16ed311fefefccea4232c1905ae9de2ec269a3d,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-983885b34b85
@@ -36,7 +36,7 @@ nazario-2025-0118,d4c045ac41bd1212027c299469e6eea954789e863fe8f58f7657eee521a178
 nazario-2025-0123,088b0a4af4868f385a6bfcb9e954f45c659daa20edecb68648fb7280d066996d,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-29099c95b26f
 nazario-2025-0126,6619c613fb300a12ac2a5c1c863bc0fd70f3ee740ece23ee683c17010743ffc3,true,payment,"impersonation,link_lure",en,high,person2,sender-hash-677350c0ef7b
 nazario-2025-0128,14955fc2524b303ade7da09ba7f8a7bf2cd8e5c84dbbe8e9d21daf325b902a2b,true,impersonation,"impersonation,link_lure",en,high,person2,sender-hash-e67b06eaa793
-nazario-2025-0129,fb2deecd626e50ef001dd51ee676e1d6b0d4b0faa1e1856065a4660911775258,true,impersonation,"impersonation,link_lure",en,high,person2,sender-hash-3d2301a8ac68
+nazario-2025-0129,fb2deecd626e50ef001dd51ee676e1d6b0d4b0faa1e1856065a4660911775258,true,credential,"urgency,impersonation,link_lure",en,high,person1,sender-hash-3d2301a8ac68
 nazario-2025-0135,e43f96bd7841212af62c4d27e4fb48965bcc2ff1f3c5c005d1316f5c4b8126fc,true,payment,"impersonation,link_lure",en,high,person2,sender-hash-bc1fb2c970ef
 nazario-2025-0145,603784123d111d0787756dfdf2e406d4fa2debca38efe6557004ef5fd8a3f6ff,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-8c828cf28938
 nazario-2025-0166,dedeef195c6b96ed34323fcecf8df062586ee387ebb44983a44c4c49eff63405,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-58d2d709ee2b
@@ -46,7 +46,7 @@ nazario-2025-0203,688da5c5a5961e990e11e1ce0b4f9a8fc8349b3689fbb59e4777db0b752cca
 nazario-2025-0204,82eebad04eee0a3e98204dc6369397ed5f893284592f160e7bb7b3db1b294205,true,impersonation,"impersonation,link_lure,attachment_lure",en,high,person2,sender-hash-ddd30539d27c
 nazario-2025-0210,caf71eecaf24d681c47a20a2953e40384f7c318da723e1815b3f5bbf3eca6911,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-7e3cc1eefbc5
 nazario-2025-0216,6ee56421a6f1208a40f29ff7d9e9303c46afa4d90bf92d41377c826a0291c216,true,impersonation,"impersonation,link_lure,attachment_lure",en,high,person2,sender-hash-ddd30539d27c
-nazario-2025-0221,9cd08ac900e5aa1f05a6d2b24e4351307c3a4d204ae27f83bfc1149c466ec69c,true,payment,impersonation,en,high,person2,sender-hash-4444f0c85d0e
+nazario-2025-0221,9cd08ac900e5aa1f05a6d2b24e4351307c3a4d204ae27f83bfc1149c466ec69c,true,payment,"urgency,impersonation",en,high,person1,sender-hash-4444f0c85d0e
 nazario-2025-0260,07d3be237da0d2d9454113eaf21d7cf2cde38988c6cf83fdc0adf2331dafe39b,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-abed6bf7660f
 nazario-2025-0263,4ee4ac607672d546787b22a5a9c6a341eebf86927da733894974bda26eb14342,true,impersonation,impersonation,en,high,person2,sender-hash-7c8b1adfd6b5
 nazario-2025-0271,4490729970764c57976a0944274a7807c89e1340f08a1bf9e112554394e7534e,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-ddd30539d27c
@@ -57,7 +57,7 @@ nazario-2025-0361,efe0fae64c1cf6efc7252bc25c30db68a2f25739977cc801db32e38e33c52b
 nazario-2025-0374,7e3b1d0ff7d25d49e650ef36cd18a00bc3da9f56b23b6d4c1137721844b7a463,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-5c6c506ce483
 nazario-2025-0377,0932feb22a9fbeae0fa41721ca09f0848193a2eb2393664d8648af4e4322f665,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-647e103325e8
 nazario-2025-0385,eac6970ff894f8e977704e69a0c0ac46064a27efb961e23f53a082e475525d35,true,impersonation,"impersonation,link_lure,attachment_lure",en,high,person2,sender-hash-b8009e4997af
-nazario-2025-0393,06f3a62d101c24ff4927acf888dff67f222998ef30bcd55f42e6cec480e73d70,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-063f3d9f1d65
+nazario-2025-0393,06f3a62d101c24ff4927acf888dff67f222998ef30bcd55f42e6cec480e73d70,true,impersonation,"impersonation,attachment_lure",en,high,person1,sender-hash-063f3d9f1d65
 nazario-2025-0404,6e5a477c287d4cb98dfe1bf24de2feef44be2997bac97dd465ac33d8018efa67,true,impersonation,"impersonation,attachment_lure",en,high,person2,sender-hash-aebf08a7cc0a
 nazario-2025-0408,2045a96b17b073dbbc060e7cc790c7bd6b8ea362533a86ed5770e5512ff9a541,true,credential,"impersonation,link_lure",en,high,person2,sender-hash-d3da861024bb
 nazario-2025-0409,0a643dc564f1678cac43ba1e003acacbc36c50b739979de92733908aaa5ca6bd,true,credential,"urgency,impersonation,link_lure",en,high,person2,sender-hash-248ce10e0de0
