@@ -2376,6 +2376,210 @@
       ],
       "source": "PhishDesk Revised 8-Month Plan (v2), sections 7 (15-20 newcomer tickets), 16 and 18",
       "status": "planned"
+    },
+    {
+      "key": "OPS01",
+      "month": 2,
+      "relative_weeks": "W5-W8",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M2][OPS01] Add database schema migrations",
+      "package": "src/phishdesk/worker; deploy",
+      "dependencies": [
+        "C06"
+      ],
+      "acceptance": [
+        "Choose and wire a migration tool with the choice and reasoning recorded",
+        "Every schema change from C06 onward ships with a migration",
+        "CI migrates from the earliest released schema to current",
+        "A documented recovery position for a failed migration"
+      ],
+      "deliverable": "Add database schema migrations",
+      "labels": [
+        "enhancement"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC02",
+      "month": 3,
+      "relative_weeks": "W9-W12",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M3][SEC02] Protect provider credentials at rest",
+      "package": "src/phishdesk/connectors; deploy",
+      "dependencies": [
+        "C05"
+      ],
+      "acceptance": [
+        "Encryption at rest for provider credentials with the key source documented",
+        "A rotation procedure and a documented revoke-and-reissue path",
+        "Credentials never appear in logs, errors, responses or support bundles; regression test",
+        "Operator documentation covering compromise response"
+      ],
+      "deliverable": "Protect provider credentials at rest",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC01",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][SEC01] Authenticate and authorise the analyst dashboard",
+      "package": "src/phishdesk/api",
+      "dependencies": [
+        "C07"
+      ],
+      "acceptance": [
+        "Record the session-vs-token and local-vs-SSO decision with reasoning",
+        "Password storage, session expiry, and lockout or rate limiting on failed sign-in",
+        "A role model that C18 approvals can reference",
+        "Every case and action route rejects unauthenticated and unauthorised requests"
+      ],
+      "deliverable": "Authenticate and authorise the analyst dashboard",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "OPS02",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][OPS02] Rate-limit reporting and expose operator observability",
+      "package": "src/phishdesk/api; deploy",
+      "dependencies": [
+        "C06",
+        "C07"
+      ],
+      "acceptance": [
+        "Per-user and global submission limits with the rejection path documented",
+        "Queue depth, job outcome and processing-time metrics exposed",
+        "Health and readiness endpoints reflecting worker and database state",
+        "Documented alert thresholds for an operator"
+      ],
+      "deliverable": "Rate-limit reporting and expose operator observability",
+      "labels": [
+        "enhancement"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC03",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][SEC03] Make the action audit log tamper-evident",
+      "package": "src/phishdesk/remediation",
+      "dependencies": [
+        "C20"
+      ],
+      "acceptance": [
+        "Append-only storage, or hash-chained entries with verification",
+        "A verification command an operator can run",
+        "Application-level modification or deletion of entries is not possible",
+        "Test proves a modified entry is detected"
+      ],
+      "deliverable": "Make the action audit log tamper-evident",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC05",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][SEC05] Encrypt stored case data at rest",
+      "package": "src/phishdesk/worker; deploy",
+      "dependencies": [
+        "C06",
+        "C08"
+      ],
+      "acceptance": [
+        "Reported message content, subjects and sender addresses encrypted at rest",
+        "Key source, rotation and operator recovery position documented",
+        "Restored backups remain encrypted and are readable only with the key",
+        "Test proves stored records are not readable from the raw datastore"
+      ],
+      "deliverable": "Encrypt stored case data at rest",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC04",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][SEC04] Document and support TLS for a networked install",
+      "package": "deploy",
+      "dependencies": [
+        "C07"
+      ],
+      "acceptance": [
+        "A supported TLS termination path with certificate issuance and renewal documented",
+        "Refuse or warn loudly when a non-loopback bind is configured without TLS",
+        "Security headers and cookie flags set appropriately for the dashboard",
+        "Deployment docs state plainly what is unsafe to expose and why"
+      ],
+      "deliverable": "Document and support TLS for a networked install",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC06",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][SEC06] Obtain an independent security review before v1",
+      "package": "docs",
+      "dependencies": [
+        "C10",
+        "SEC01",
+        "C20"
+      ],
+      "acceptance": [
+        "An independent reviewer outside both owners examines containment, authentication and the action audit",
+        "Findings recorded with severity, owner and resolution or accepted-risk note",
+        "Blocking findings fixed and retested before the launch gate",
+        "Scope and limits of the review stated; no claim beyond what was examined"
+      ],
+      "deliverable": "Obtain an independent security review before v1",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
     }
   ]
 }
