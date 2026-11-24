@@ -12,6 +12,8 @@
 /web/ @phishdesk-project/ai-ml @phishdesk-project/cyber
 /brands/ @phishdesk-project/ai-ml @phishdesk-project/cyber
 /bench/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/src/phishdesk_analysis/ @phishdesk-project/ai-ml @phishdesk-project/cyber
+/data/ @phishdesk-project/ai-ml @phishdesk-project/cyber
 
 # Cybersecurity-led paths
 /src/phishdesk/parsing/ @phishdesk-project/cyber @phishdesk-project/ai-ml
@@ -31,3 +33,5 @@
 /docs/ @phishdesk-project/cyber @phishdesk-project/ai-ml
 /.github/ @phishdesk-project/cyber @phishdesk-project/ai-ml
 /pyproject.toml @phishdesk-project/cyber @phishdesk-project/ai-ml
+/scripts/ @phishdesk-project/cyber @phishdesk-project/ai-ml
+/tests/ @phishdesk-project/cyber @phishdesk-project/ai-ml
