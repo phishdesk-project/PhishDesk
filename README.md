@@ -91,6 +91,9 @@ or a contained browser sandbox.
 
 ## Checks before a pull request
 
+Run them all with `make check` (GNU make; on Windows use Git Bash/WSL or run
+the commands below directly). The Makefile wraps exactly this list:
+
 ```sh
 python -m ruff check src tests scripts
 python -m ruff format --check src tests scripts
