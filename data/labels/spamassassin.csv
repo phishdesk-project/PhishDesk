@@ -1,0 +1,6 @@
+id,sha256,is_phishing,category,tactics,language,label_confidence,label_by,group
+spamassassin-easy-ham-0026,972edaccd1fc7ac3a3f2f73f47c1333e1db700106dc082131449331708617fb3,false,benign,,en,high,person2,sender-hash-3e38f5f3ce02
+spamassassin-easy-ham-0271,896754f35facac75cd55e1f7698324979d5d1e39437863044f1ff3482a3d6328,false,benign,,en,high,person2,sender-hash-893410a7a561
+spamassassin-easy-ham-0284,d7adab13b05b7075a6eea956148cc59460711ee617d2325f030241d2017d8708,false,benign,,en,high,person2,sender-hash-b4825bd3c68b
+spamassassin-easy-ham-0322,7753891117741e7e66889b405343e77640de3667a6db54a510d050c3a87d8534,false,benign,,en,high,person2,sender-hash-4ad60086c493
+spamassassin-easy-ham-0383,6f6bc06f6fc094bb49ae2b4fdb0ed6e08506048224417c5dd0826e4f4adfb85c,false,benign,,en,high,person2,sender-hash-e55c7e9fad04
