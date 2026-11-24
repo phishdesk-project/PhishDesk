@@ -9,3 +9,8 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # init and analyze must move together; one PR per bump, never split.
+    groups:
+      codeql-action:
+        patterns:
+          - "github/codeql-action*"
