@@ -3,6 +3,11 @@
 Source: [PhishDesk Revised 8-Month Plan (v2)](PhishDesk-Revised-8-Month-Plan-v2.pdf).
 SHA-256: `47b1fafb621f77b094970dcbea90a399274a31455c85828ebddc1827149d584e`. The original blueprint is not needed to override the revised plan.
 
+Five operational tasks absent from the v2 plan (OPS01, OPS02, SEC01, SEC02, SEC03)
+were added in November 2026. The v2 baseline of 96 tasks is unchanged and enforced
+by `scripts/check_roadmap.py`. Reasoning, and the structural findings still awaiting
+both owners' decisions, are in [gap-analysis-2026-11.md](gap-analysis-2026-11.md).
+
 **No calendar start dates or deadlines.** Month/week numbers describe order at available free-time capacity. All tasks start as planned/backlog.
 
 ## Phases and gates
