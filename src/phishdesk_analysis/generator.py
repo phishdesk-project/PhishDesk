@@ -282,14 +282,43 @@ def plan_by_category(
 
 
 def write_dataset(config: GeneratorConfig, plan: Plan, eml_dir: Path, records_path: Path) -> int:
-    """Write .eml files and a JSONL of records. Replaces previous synthetic output."""
+    """Write .eml files and a JSONL of records. Replaces previous synthetic output.
+
+    The plan says how many emails each family needs. Seeds are tried in order and
+    any email whose text duplicates an earlier one is skipped, so the counts asked
+    for are the counts that survive deduplication in build_dataset.py.
+    """
+    from phishdesk_analysis.corpus import normalise, parse_email, plain_text
+
+    needed: dict[str, int] = {}
+    families: dict[str, Family] = {}
+    for family, _ in plan:
+        needed[family.id] = needed.get(family.id, 0) + 1
+        families[family.id] = family
+
     eml_dir.mkdir(parents=True, exist_ok=True)
     for old in eml_dir.glob("syn-*.eml"):
         old.unlink()
     records_path.parent.mkdir(parents=True, exist_ok=True)
+    seen: set[str] = set()
+    written = 0
     with open(records_path, "w", encoding="utf-8", newline="\n") as out:
-        for family, seed in plan:
-            data, record = generate_email(config, family, seed)
-            (eml_dir / f"{record.id}.eml").write_bytes(data)
-            out.write(json.dumps(record.model_dump(mode="json")) + "\n")
-    return len(plan)
+        for family_id, count in needed.items():
+            family, seed, made = families[family_id], 0, 0
+            while made < count:
+                if seed >= count * 50:
+                    raise GeneratorError(
+                        f"family '{family_id}' cannot make {count} distinct emails; "
+                        "add more template variety or lower the count"
+                    )
+                data, record = generate_email(config, family, seed)
+                seed += 1
+                key = normalise(plain_text(parse_email(data)))
+                if key in seen:
+                    continue
+                seen.add(key)
+                (eml_dir / f"{record.id}.eml").write_bytes(data)
+                out.write(json.dumps(record.model_dump(mode="json")) + "\n")
+                made += 1
+                written += 1
+    return written

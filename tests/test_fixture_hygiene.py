@@ -15,6 +15,7 @@ from phishdesk_analysis.safety import is_reserved_domain, unreserved_domains
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = Path(__file__).parent / "fixtures"
+LABEL_FILES = sorted((ROOT / "data" / "labels").glob("*.csv"))
 FIXTURE_FILES = [
     p
     for p in FIXTURES.rglob("*")
@@ -53,11 +54,21 @@ def test_fixtures_contain_no_secrets(path):
     assert not found, f"possible secrets in {path.name}: {found}"
 
 
+@pytest.mark.parametrize("path", LABEL_FILES, ids=lambda p: p.name)
+def test_committed_labels_hold_no_senders_subjects_or_secrets(path):
+    text = path.read_text(encoding="utf-8")
+    assert unreserved_domains(text) == [], path.name
+    assert "@" not in text, f"email address in {path.name}"
+    header = text.splitlines()[0].split(",")
+    assert not {"from", "subject", "reason"} & set(header), path.name
+    assert not [n for n, p in SECRETS.items() if p.search(text)], path.name
+
+
 def test_no_raw_public_data_is_tracked_by_git():
     if shutil.which("git") is None or not (ROOT / ".git").exists():
         pytest.skip("not running inside a git checkout")
     tracked = subprocess.run(
-        ["git", "ls-files", "data/raw/public", "*.mbox"],
+        ["git", "ls-files", "data/raw/public", "data/labels/work", "*.mbox"],
         cwd=ROOT,
         capture_output=True,
         text=True,
