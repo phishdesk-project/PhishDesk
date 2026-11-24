@@ -8,10 +8,10 @@ The v2 plan remains the baseline. Its 96 tasks are untouched: no task was remove
 renamed, re-phased, or had its dependencies rewritten. `scripts/check_roadmap.py`
 now enforces that the baseline stays at 96, so a silent edit to it fails CI.
 
-## 1. Five tasks added
+## 1. Eight tasks added
 
-The plan ended at M8 without a path to a deployable install. Five operational
-concerns were absent from all 96 tasks. They are added as ordinary planned tasks
+The plan ended at M8 without a path to a deployable install. Eight operational and
+security concerns were absent from all 96 tasks. They are added as ordinary planned tasks
 with real prerequisites, not as a separate backlog.
 
 | Key | Phase | Deliverable | Depends on |
@@ -20,7 +20,10 @@ with real prerequisites, not as a separate backlog.
 | SEC02 | M3 | Provider credentials protected at rest | C05 |
 | SEC01 | M4 | Dashboard authentication and authorisation | C07 |
 | OPS02 | M4 | Report rate limiting and operator observability | C06, C07 |
+| SEC05 | M4 | Stored case data encrypted at rest | C06, C08 |
+| SEC04 | M6 | TLS supported and documented for a networked install | C07 |
 | SEC03 | M6 | Tamper-evident action audit log | C20 |
+| SEC06 | M7 | Independent security review before v1 | C10, SEC01, C20 |
 
 Why each was missing, and why it is placed where it is:
 
@@ -50,6 +53,28 @@ nothing bounds that; one misconfigured forwarding rule fills the queue. Separate
 `opentelemetry-api` is a pinned dependency that nothing imports, and no task covers
 health endpoints, queue depth, job failure rate or alert thresholds — all of which an
 operator needs before this runs unattended.
+
+**SEC05 — case data encrypted at rest (M4, after C08).** SEC02 covers provider
+credentials. The case store holds the reported messages themselves: subjects, bodies
+and sender addresses, which are real employee mail. C08 covers retention, redaction
+and delete-case, which is lifecycle rather than encryption. An operator whose database
+file is taken loses every reported message in plaintext. Placed in M4 rather than M3
+to avoid loading M3 further; the exposure in fact begins at C06, so this placement is
+a compromise and is worth arguing about.
+
+**SEC04 — TLS for a networked install (M6, with deployment docs).** Nothing in the
+plan mentioned TLS, certificates or a reverse proxy. That is currently harmless because
+everything binds to loopback, but a self-hosted install an operator actually runs is
+reachable over a network, and a tool carrying reported mail and quarantine approvals
+over plain HTTP is not deployable. Placed with C24 so the deployment story lands
+together.
+
+**SEC06 — independent security review (M7, before the launch gate).** No task in the
+plan brings in anyone outside the two owners. For a project whose value rests on
+trustworthy security evidence, that is the gap most likely to be noticed by whoever
+evaluates it. Neither owner is independent of the containment work, the authentication
+work or the audit. Placed in M7 so findings can be fixed before M8 rather than
+discovered at launch.
 
 **SEC03 — audit integrity (M6, hardening).** C20 records a redacted action audit, but
 nothing establishes that the record cannot be altered afterwards. If an attacker
@@ -143,6 +168,6 @@ Combined with 3.1, the cyber track is both the longer queue and the critical pat
 ## 4. What this does not do
 
 This does not make PhishDesk production-ready, and nothing here should be read as
-claiming it. It makes the *plan* complete: the five concerns above now have owners,
+claiming it. It makes the *plan* complete: the eight concerns above now have owners,
 prerequisites and acceptance criteria instead of being absent. The software behind
 them is unwritten, and the honest statement of status remains the one in README.

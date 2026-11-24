@@ -2502,6 +2502,84 @@
       ],
       "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
       "status": "planned"
+    },
+    {
+      "key": "SEC05",
+      "month": 4,
+      "relative_weeks": "W13-W16",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M4][SEC05] Encrypt stored case data at rest",
+      "package": "src/phishdesk/worker; deploy",
+      "dependencies": [
+        "C06",
+        "C08"
+      ],
+      "acceptance": [
+        "Reported message content, subjects and sender addresses encrypted at rest",
+        "Key source, rotation and operator recovery position documented",
+        "Restored backups remain encrypted and are readable only with the key",
+        "Test proves stored records are not readable from the raw datastore"
+      ],
+      "deliverable": "Encrypt stored case data at rest",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC04",
+      "month": 6,
+      "relative_weeks": "W21-W24",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M6][SEC04] Document and support TLS for a networked install",
+      "package": "deploy",
+      "dependencies": [
+        "C07"
+      ],
+      "acceptance": [
+        "A supported TLS termination path with certificate issuance and renewal documented",
+        "Refuse or warn loudly when a non-loopback bind is configured without TLS",
+        "Security headers and cookie flags set appropriately for the dashboard",
+        "Deployment docs state plainly what is unsafe to expose and why"
+      ],
+      "deliverable": "Document and support TLS for a networked install",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
+    },
+    {
+      "key": "SEC06",
+      "month": 7,
+      "relative_weeks": "W25-W28",
+      "track": "cyber",
+      "lead": "k-Darshan-chowdary",
+      "reviewer": "RishithaDama",
+      "title": "[M7][SEC06] Obtain an independent security review before v1",
+      "package": "docs",
+      "dependencies": [
+        "C10",
+        "SEC01",
+        "C20"
+      ],
+      "acceptance": [
+        "An independent reviewer outside both owners examines containment, authentication and the action audit",
+        "Findings recorded with severity, owner and resolution or accepted-risk note",
+        "Blocking findings fixed and retested before the launch gate",
+        "Scope and limits of the review stated; no claim beyond what was examined"
+      ],
+      "deliverable": "Obtain an independent security review before v1",
+      "labels": [
+        "security"
+      ],
+      "source": "Gap analysis against the v2 plan, 2026-11-23; not in the original plan",
+      "status": "planned"
     }
   ]
 }
