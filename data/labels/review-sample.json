@@ -1,0 +1,41 @@
+{
+  "fraction": 0.15,
+  "seed": 7,
+  "ids": {
+    "enron": [
+      "enron-01acad85c3",
+      "enron-0247e55ac0",
+      "enron-077b02e302",
+      "enron-0f73860398",
+      "enron-1ee13d61c4",
+      "enron-21ef35d7cb",
+      "enron-2306360e6e",
+      "enron-261686073c",
+      "enron-2ec8186508",
+      "enron-30d93cc33f",
+      "enron-35836c52af",
+      "enron-46b0b7ff48",
+      "enron-4a9771f62d",
+      "enron-4ba5e3a5ca",
+      "enron-569fa5a40a",
+      "enron-5eea1d6a33",
+      "enron-616072fcce",
+      "enron-62c9e53932"
+    ],
+    "nazario": [
+      "nazario-2025-0004",
+      "nazario-2025-0008",
+      "nazario-2025-0009",
+      "nazario-2025-0087",
+      "nazario-2025-0110",
+      "nazario-2025-0129",
+      "nazario-2025-0196",
+      "nazario-2025-0221",
+      "nazario-2025-0393",
+      "nazario-2025-0409"
+    ],
+    "spamassassin": [
+      "spamassassin-easy-ham-0322"
+    ]
+  }
+}
