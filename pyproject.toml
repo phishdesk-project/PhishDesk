@@ -9,6 +9,7 @@ description = "PhishDesk contracts, synthetic mock API and case/job store; found
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
+
 dependencies = [
     "pydantic>=2.10,<3",
     "fastapi>=0.115,<1",
@@ -16,6 +17,7 @@ dependencies = [
     "sqlalchemy>=2.0,<3",
     "psycopg[binary]>=3.2,<4",
     "dramatiq[redis]>=1.17,<2",
+    "scikit-learn>=1.5,<2",
 ]
 
 [project.optional-dependencies]
