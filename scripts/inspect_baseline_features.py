@@ -20,7 +20,7 @@ model = build_pipeline(config).fit(texts, [records[i].is_phishing for i in train
 names = model.named_steps["tfidf"].get_feature_names_out()
 weights = model.named_steps["clf"].coef_[0]
 sign = 1 if list(model.classes_).index(True) == 1 else -1
-ranked = sorted(zip(weights * sign, names))
+ranked = sorted(zip(weights * sign, names, strict=True))
 print("Most 'legitimate' terms:")
 print(", ".join(term for _, term in ranked[:30]))
 print("\nMost 'phishing' terms:")

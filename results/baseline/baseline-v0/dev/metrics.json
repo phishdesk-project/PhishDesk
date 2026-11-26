@@ -1,0 +1,94 @@
+{
+  "accuracy": 1.0,
+  "by_category": {
+    "benign": {
+      "detection_rate": null,
+      "false_alarm_rate": 0.0,
+      "false_alarms": "0/18",
+      "n": 18,
+      "phishing_detected": null
+    },
+    "credential": {
+      "detection_rate": 1.0,
+      "false_alarm_rate": null,
+      "false_alarms": null,
+      "n": 6,
+      "phishing_detected": "6/6"
+    },
+    "impersonation": {
+      "detection_rate": 1.0,
+      "false_alarm_rate": null,
+      "false_alarms": null,
+      "n": 2,
+      "phishing_detected": "2/2"
+    },
+    "legit_urgent": {
+      "detection_rate": null,
+      "false_alarm_rate": 0.0,
+      "false_alarms": "0/2",
+      "n": 2,
+      "phishing_detected": null
+    },
+    "payment": {
+      "detection_rate": 1.0,
+      "false_alarm_rate": null,
+      "false_alarms": null,
+      "n": 2,
+      "phishing_detected": "2/2"
+    }
+  },
+  "by_source": {
+    "enron": {
+      "detection_rate": null,
+      "false_alarm_rate": 0.0,
+      "false_alarms": "0/19",
+      "n": 19,
+      "phishing_detected": null
+    },
+    "nazario": {
+      "detection_rate": 1.0,
+      "false_alarm_rate": null,
+      "false_alarms": null,
+      "n": 10,
+      "phishing_detected": "10/10"
+    },
+    "spamassassin": {
+      "detection_rate": null,
+      "false_alarm_rate": 0.0,
+      "false_alarms": "0/1",
+      "n": 1,
+      "phishing_detected": null
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "legitimate",
+      "phishing"
+    ],
+    "rows_actual_cols_predicted": [
+      [
+        20,
+        0
+      ],
+      [
+        0,
+        10
+      ]
+    ]
+  },
+  "f1": 1.0,
+  "n": 30,
+  "negatives": 20,
+  "positives": 10,
+  "precision": 1.0,
+  "precision_95ci": [
+    0.7225,
+    1.0
+  ],
+  "recall": 1.0,
+  "recall_95ci": [
+    0.7225,
+    1.0
+  ],
+  "threshold": 0.5
+}

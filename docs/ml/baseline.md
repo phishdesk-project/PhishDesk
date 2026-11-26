@@ -72,3 +72,10 @@ See [`results/baseline/baseline-v0/dev/report.md`](../../results/baseline/baseli
   attachments. That is deliberate; those signals belong to the evidence checks and the
   LLM analyzer it will be compared with.
 - No claim is made beyond the evaluated split and configuration.
+- **v0 dev results are inflated by a source shortcut.** All real phishing comes from
+  Nazario (2025) and all real legitimate mail from Enron and SpamAssassin (2001–2003).
+  `python scripts/inspect_baseline_features.py` shows the model relies largely on source
+  identifiers (the Nazario inbox owner's address, "enron", years, a phone code) and on
+  synthetic template phrases. Treat v0's dev score as a reproducible reference, not as
+  evidence of phishing detection ability. Follow-ups: identifier masking (baseline v1)
+  and a dataset without the source/era split (dataset v1).

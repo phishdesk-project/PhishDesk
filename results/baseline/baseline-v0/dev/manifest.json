@@ -1,0 +1,52 @@
+{
+  "command": "python scripts/run_baseline.py",
+  "config": {
+    "logreg": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "max_iter": 1000
+    },
+    "name": "baseline-v0",
+    "seed": 42,
+    "tfidf": {
+      "lowercase": true,
+      "max_features": 50000,
+      "min_df": 2,
+      "ngram_max": 2,
+      "ngram_min": 1,
+      "sublinear_tf": true
+    },
+    "threshold": 0.5
+  },
+  "config_name": "baseline-v0",
+  "created": "2026-11-24T17:23:32+00:00",
+  "environment": {
+    "packages": {
+      "numpy": "2.5.5",
+      "pydantic": "2.14.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.7"
+  },
+  "final_evaluation": false,
+  "git": {
+    "commit": "9c909481340c2c80de30e32cc104988f2d043ce8",
+    "dirty": false
+  },
+  "records_sha256": "b6b4c67d2dc2699d3c84ba2a87fa40f1b9292c1200d5b69037357732246b13b2",
+  "seed": 42,
+  "split": "dev",
+  "split_sha256": "418f0c91c25fda0de021541b59303ae07adb4a56b2c76c4d6e80cab83f0f46ef",
+  "split_sizes": {
+    "dev": 30,
+    "train": 540,
+    "train_benign": 194,
+    "train_credential": 95,
+    "train_impersonation": 47,
+    "train_legit_urgent": 68,
+    "train_payment": 86,
+    "train_urgency": 50
+  }
+}
