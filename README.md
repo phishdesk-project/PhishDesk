@@ -25,6 +25,11 @@ spike passed within documented limits. Owned-file policy denials are user-verifi
 Production containment and independent boundary traffic remain unproven; no unknown
 live URLs are allowed. M365/Graph remains deferred at the Month 2 tenant gate.
 
+C06 adds a PostgreSQL case store and idempotent Dramatiq/Redis parse jobs with
+queued/running/succeeded/failed states ([design](docs/decisions/0002-job-queue.md),
+[usage](src/phishdesk/worker/README.md)). There is no case API, authentication,
+encryption at rest or retention yet; use synthetic messages only.
+
 Darshan (@k-Darshan-chowdary) leads cybersecurity/backend. Rishitha (@RishithaDama)
 leads AI/ML and the React dashboard. Ownership is equal; reviews, contracts,
 documentation, releases and community work are shared.
@@ -98,7 +103,7 @@ the commands below directly). The Makefile wraps exactly this list:
 python -m ruff check src tests scripts
 python -m ruff format --check src tests scripts
 python -m mypy
-python -m pytest -q
+python -m pytest -q   # worker tests need PHISHDESK_TEST_DATABASE_URL/_REDIS_URL, else skip
 python scripts/export_contracts.py --check
 python scripts/check_roadmap.py
 python -m pip_audit -r requirements.lock

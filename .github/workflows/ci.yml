@@ -16,6 +16,29 @@ jobs:
     strategy:
       matrix:
         python: ['3.11', '3.13']
+    # Disposable database for tests/worker. Credentials are throwaway test values.
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: phishdesk
+          POSTGRES_PASSWORD: phishdesk-ci
+          POSTGRES_DB: phishdesk_test
+        ports:
+          - 127.0.0.1:5432:5432
+        options: >-
+          --health-cmd "pg_isready -U phishdesk -d phishdesk_test"
+          --health-interval 2s --health-timeout 5s --health-retries 30
+      redis:
+        image: redis:7
+        ports:
+          - 127.0.0.1:6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 2s --health-timeout 5s --health-retries 30
+    env:
+      PHISHDESK_TEST_DATABASE_URL: postgresql+psycopg://phishdesk:phishdesk-ci@127.0.0.1:5432/phishdesk_test
+      PHISHDESK_TEST_REDIS_URL: redis://127.0.0.1:6379/15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
